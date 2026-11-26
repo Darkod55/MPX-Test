@@ -13,7 +13,6 @@ export type SocialLink = {
 export const mainNav: NavItem[] = [
 	{ label: "About", href: "/all-about-metapixels" },
 	{ label: "Services", href: "/services" },
-	{ label: "Work", href: "/work" },
 	{ label: "Contact", href: "/contact" },
 ];
 
@@ -24,7 +23,6 @@ export const mainNav: NavItem[] = [
 export const footerNav: NavItem[] = [
 	{ label: "About MetaPixels", href: "/all-about-metapixels" },
 	{ label: "Explore Our Services", href: "/services" },
-	{ label: "View Previous Work", href: "/work" },
 	{ label: "Make Contact with Us", href: "/contact" },
 	{ label: "Get a Performance Audit", href: "/performance-audit" },
 ];

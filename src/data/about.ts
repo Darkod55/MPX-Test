@@ -15,7 +15,7 @@ export const aboutIntro = {
 		"Our aim is to build client relationships, understand your business, and tailor branding, websites, SEO and marketing campaigns to your needs.",
 		"MetaPixels is a UK-based digital agency for branding, websites, marketing and design.",
 	],
-	cta: { label: "Check our work", href: "/work" },
+	cta: { label: "Explore our services", href: "/services" },
 };
 
 export const aboutVisible = {

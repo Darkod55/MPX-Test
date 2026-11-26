@@ -15,7 +15,6 @@ export const GET: APIRoute = async ({ site, url, request }) => {
 	const home = absoluteUrl("/", origin);
 	const about = absoluteUrl("/all-about-metapixels", origin);
 	const services = absoluteUrl("/services", origin);
-	const work = absoluteUrl("/work", origin);
 	const contact = absoluteUrl("/contact", origin);
 	const audit = absoluteUrl("/performance-audit", origin);
 	const sitemap = absoluteUrl("/sitemap.xml", origin);
@@ -35,7 +34,6 @@ MetaPixels is a UK digital agency for branding, web design, web development, SEO
 - [Home](${home}): Agency overview
 - [About](${about}): The team and how we work
 - [Services](${services}): Digital services
-- [Work](${work}): Client case studies
 - [Contact](${contact}): Enquiry form and offices
 - [Performance audit](${audit}): Free website performance audit
 - [Sitemap](${sitemap}): Machine-readable list of public URLs

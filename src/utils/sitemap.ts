@@ -14,7 +14,6 @@ export const STATIC_SITEMAP_PATHS = [
 	"/",
 	"/all-about-metapixels",
 	"/services",
-	"/work",
 	"/contact",
 	"/performance-audit",
 	"/privacy-policy",

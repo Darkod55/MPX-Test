@@ -20,11 +20,6 @@ export const notFound = {
 			href: "/all-about-metapixels",
 		},
 		{
-			text: "Our work",
-			description: "Case studies across branding, websites and marketing.",
-			href: "/work",
-		},
-		{
 			text: "Contact us",
 			description: "Tell us what you need and we'll help.",
 			href: "/contact",

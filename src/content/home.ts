@@ -110,7 +110,6 @@ export const homeRecentWork = [
 	{
 		id: "client-ja-brooks",
 		title: "JA Brooks",
-		href: "/work#client-ja-brooks",
 		image: jaBrooks,
 		imageAlt: "MetaPixels client website mockup JA Brooks",
 		summary:
@@ -119,7 +118,6 @@ export const homeRecentWork = [
 	{
 		id: "client-home-statements",
 		title: "Home Statements",
-		href: "/work#client-home-statements",
 		image: homeStatements,
 		imageAlt: "MetaPixels client website mockup Home Statements",
 		summary:
@@ -128,7 +126,6 @@ export const homeRecentWork = [
 	{
 		id: "client-cyberone",
 		title: "CyberOne",
-		href: "/work#client-cyberone",
 		image: cyberone,
 		imageAlt: "MetaPixels client website mockup CyberOne",
 		summary:
