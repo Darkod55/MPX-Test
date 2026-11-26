@@ -1,0 +1,209 @@
+---
+import type { ImageMetadata } from "astro";
+import { getSiteSettings } from "emdash";
+import "../styles/global.css";
+import SiteChrome from "../components/layout/SiteChrome.astro";
+import Footer from "../components/layout/Footer.astro";
+import GoogleAnalytics from "../components/analytics/GoogleAnalytics.astro";
+import {
+	getHeroLcpPreload,
+	type HeroLcpVariant,
+} from "../utils/hero-lcp";
+import {
+	absoluteUrl,
+	buildSiteGraph,
+	DEFAULT_OG_IMAGE,
+	DEFAULT_OG_IMAGE_ALT,
+	DEFAULT_OG_IMAGE_HEIGHT,
+	DEFAULT_OG_IMAGE_WIDTH,
+	documentTitle,
+	resolveSiteOrigin,
+	serializeJsonLd,
+	SITE_LAUNCH_DATE,
+	toSchemaDate,
+	webPageJsonLd,
+	type JsonLd,
+} from "../utils/seo";
+
+interface Props {
+	title: string;
+	description?: string;
+	/** Path for canonical + og:url (default: current pathname) */
+	canonicalPath?: string;
+	/** Social image — absolute URL or site path (defaults to brand share card) */
+	ogImage?: string;
+	ogImageAlt?: string;
+	ogType?: "website" | "article";
+	robots?: string;
+	/** Machine-readable publish date for WebPage JSON-LD */
+	datePublished?: string | Date;
+	/** Machine-readable last-modified date for WebPage JSON-LD */
+	dateModified?: string | Date;
+	/** Extra JSON-LD nodes merged into the site @graph (Organization + WebSite always included) */
+	jsonLd?: JsonLd;
+	/** Hide the red audit announcement bar */
+	showAuditBar?: boolean;
+	/** Above-the-fold hero photo — preloaded in <head> for faster LCP */
+	lcpImage?: ImageMetadata;
+	lcpVariant?: HeroLcpVariant;
+}
+
+const {
+	title,
+	description = "",
+	canonicalPath,
+	ogImage = DEFAULT_OG_IMAGE,
+	ogImageAlt = DEFAULT_OG_IMAGE_ALT,
+	ogType = "website",
+	robots,
+	datePublished = SITE_LAUNCH_DATE,
+	dateModified = datePublished,
+	jsonLd,
+	showAuditBar = true,
+	lcpImage,
+	lcpVariant = "page",
+} = Astro.props;
+
+const heroLcp = lcpImage
+	? await getHeroLcpPreload(lcpImage, lcpVariant)
+	: null;
+
+const schemaPublished = toSchemaDate(datePublished);
+const schemaModified = toSchemaDate(dateModified);
+
+const settings = await getSiteSettings();
+const fullTitle = documentTitle(title);
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+const path = canonicalPath ?? Astro.url.pathname;
+const canonical = absoluteUrl(path, origin);
+const shareImage = absoluteUrl(ogImage, origin);
+const metaDescription =
+	description ||
+	"Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.";
+
+const extraNodes: Record<string, unknown>[] = [
+	webPageJsonLd({
+		origin,
+		path,
+		title: fullTitle,
+		description: metaDescription,
+		datePublished: schemaPublished,
+		dateModified: schemaModified,
+	}),
+];
+
+if (jsonLd) {
+	if (Array.isArray(jsonLd)) extraNodes.push(...jsonLd);
+	else extraNodes.push(jsonLd);
+}
+
+const graph = buildSiteGraph(origin, extraNodes);
+
+const faviconUrl = settings?.favicon?.url ?? "/logo.svg";
+const faviconType =
+	settings?.favicon?.contentType ??
+	(faviconUrl.endsWith(".svg") ? "image/svg+xml" : undefined);
+---
+
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{fullTitle}</title>
+		<meta name="description" content={metaDescription} />
+		<meta
+			name="google-site-verification"
+			content="Az_EEhI_fuZJ-68fLB1F0XAE30YIa01cXWgAtsRVJHc"
+		/>
+		{robots && <meta name="robots" content={robots} />}
+		<link rel="canonical" href={canonical} />
+
+		{
+			heroLcp && (
+				<link
+					rel="preload"
+					as="image"
+					href={heroLcp.href}
+					imagesrcset={heroLcp.imagesrcset}
+					imagesizes={heroLcp.imagesizes}
+					fetchpriority="high"
+				/>
+			)
+		}
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:site_name" content="The Square Peg Agency" />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={shareImage} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content={String(DEFAULT_OG_IMAGE_WIDTH)} />
+		<meta property="og:image:height" content={String(DEFAULT_OG_IMAGE_HEIGHT)} />
+		<meta property="article:published_time" content={schemaPublished} />
+		<meta property="article:modified_time" content={schemaModified} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={metaDescription} />
+		<meta name="twitter:image" content={shareImage} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
+
+		<link rel="icon" href={faviconUrl} type={faviconType} />
+
+		<script
+			type="application/ld+json"
+			set:html={serializeJsonLd(graph)}
+		/>
+		<GoogleAnalytics />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<SiteChrome showAuditBar={showAuditBar} />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+		<script src="../scripts/early-lazy-images.ts"></script>
+		<script src="../scripts/site-analytics.ts"></script>
+	</body>
+</html>
+
+<style is:global>
+	.skip-link {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		z-index: 1000;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		padding: 0 22px;
+		font-family: var(--font-heading);
+		font-size: 0.875rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--color-white);
+		background: var(--color-navy);
+		clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+		transform: translateY(-160%);
+		transition: transform 0.15s ease;
+	}
+
+	.skip-link:focus,
+	.skip-link:focus-visible {
+		transform: translateY(0);
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+		color: var(--color-white);
+	}
+</style>

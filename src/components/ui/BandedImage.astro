@@ -1,0 +1,183 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image as AstroImage } from "astro:assets";
+import { Image as EmDashImage } from "emdash/ui";
+
+type CmsImage = {
+	id: string;
+	src?: string;
+	alt?: string;
+	width?: number;
+	height?: number;
+	[key: string]: unknown;
+};
+
+interface Props {
+	/** Local Astro asset. Prefer this for hardcoded sections. */
+	image?: ImageMetadata;
+	/** EmDash media library image from a CMS block. */
+	cmsImage?: CmsImage | null;
+	alt: string;
+	position?: string;
+	filter?: "none" | "grayscale";
+	corners?: "tl-br" | "tl-bl";
+	maxWidth?: string;
+	/** Above-the-fold / LCP images — skip lazy loading. */
+	priority?: boolean;
+	class?: string;
+}
+
+const {
+	image,
+	cmsImage,
+	alt,
+	position = "center",
+	filter = "none",
+	corners = "tl-br",
+	maxWidth = "520px",
+	priority = false,
+	class: className,
+} = Astro.props;
+
+const imgClass = [
+	"banded-image__img",
+	filter === "grayscale" && "banded-image__img--grayscale",
+];
+
+/** Display width from maxWidth (e.g. "520px") — keep srcset honest. */
+const displayPx = Number.parseInt(maxWidth, 10);
+const bandedMax = Number.isFinite(displayPx) && displayPx > 0 ? displayPx : 520;
+const bandedSizes = `(min-width: 1024px) ${bandedMax}px, min(100vw, ${Math.max(bandedMax, 640)}px)`;
+const bandedWidths = [
+	Math.min(480, bandedMax * 2),
+	Math.min(640, bandedMax * 2),
+	Math.min(800, bandedMax * 2),
+	Math.min(960, bandedMax * 2),
+].filter((w, i, arr) => w > 0 && arr.indexOf(w) === i);
+---
+
+<figure
+	class:list={["banded-image", `banded-image--${corners}`, className]}
+	style={`--banded-max: ${maxWidth}; --banded-pos: ${position}`}
+>
+	{
+		cmsImage ? (
+			<EmDashImage
+				image={cmsImage}
+				alt={alt}
+				class:list={imgClass}
+				sizes={bandedSizes}
+				style={`object-position: ${position}`}
+				priority={priority}
+			/>
+		) : image ? (
+			<AstroImage
+				src={image}
+				alt={alt}
+				class:list={imgClass}
+				width={Math.min(800, bandedMax * 2)}
+				widths={bandedWidths}
+				sizes={bandedSizes}
+				quality={78}
+				format="webp"
+				priority={priority}
+				loading={priority ? "eager" : "lazy"}
+				fetchpriority={priority ? "high" : undefined}
+				decoding="async"
+			/>
+		) : (
+			<div class="banded-image__img banded-image__placeholder" aria-hidden="true" />
+		)
+	}
+	<div class="banded-image__bands" aria-hidden="true">
+		<span class="banded-image__band banded-image__band--tl-navy"></span>
+		<span class="banded-image__band banded-image__band--tl-red"></span>
+		{
+			corners === "tl-br" ? (
+				<>
+					<span class="banded-image__band banded-image__band--br-red"></span>
+					<span class="banded-image__band banded-image__band--br-navy"></span>
+				</>
+			) : (
+				<>
+					<span class="banded-image__band banded-image__band--bl-red"></span>
+					<span class="banded-image__band banded-image__band--bl-navy"></span>
+				</>
+			)
+		}
+	</div>
+</figure>
+
+<style>
+	.banded-image {
+		position: relative;
+		width: 100%;
+		max-width: var(--banded-max, 520px);
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		margin: 0;
+		background: var(--color-grey-300);
+	}
+
+	.banded-image__img,
+	.banded-image :global(img) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: var(--banded-pos, center);
+		display: block;
+	}
+
+	.banded-image__placeholder {
+		background: var(--color-grey-400);
+	}
+
+	.banded-image__img--grayscale,
+	.banded-image :global(.banded-image__img--grayscale) {
+		filter: grayscale(1);
+	}
+
+	.banded-image__bands {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.banded-image__band {
+		position: absolute;
+		inset: 0;
+	}
+
+	.banded-image__band--tl-navy {
+		background: var(--color-navy);
+		clip-path: polygon(0 0, 55% 0, 45% 10%, 15% 10%, 0 17%);
+	}
+
+	.banded-image__band--tl-red {
+		background: var(--color-red);
+		clip-path: polygon(0 17%, 15% 10%, 30% 10%, 0 24%);
+	}
+
+	.banded-image__band--br-red {
+		background: var(--color-red);
+		clip-path: polygon(100% 76%, 100% 90%, 72% 100%, 40% 100%);
+	}
+
+	.banded-image__band--br-navy {
+		background: var(--color-navy);
+		clip-path: polygon(100% 90%, 100% 100%, 72% 100%);
+	}
+
+	.banded-image__band--bl-red {
+		background: var(--color-red);
+		clip-path: polygon(0 76%, 0 90%, 28% 100%, 60% 100%);
+	}
+
+	.banded-image__band--bl-navy {
+		background: var(--color-navy);
+		clip-path: polygon(0 90%, 0 100%, 28% 100%);
+	}
+</style>

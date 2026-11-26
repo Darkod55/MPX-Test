@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
+import PullQuote from "../../components/blog/PullQuote.astro";
+import InlineImage from "../../components/blog/InlineImage.astro";
+import KeyTakeaways from "../../components/blog/KeyTakeaways.astro";
+import {
+	isPublishedPost,
+	relatedPosts,
+	sortPostsByDate,
+} from "../../utils/blog";
+
+/*
+ * SSR (not prerender): static blog HTML was stuck in a trailing-slash
+ * meta-refresh loop on the Node/LiteSpeed host (both /post and /post/
+ * served the redirect stub to itself).
+ */
+export const prerender = false;
+
+const slug = Astro.params.slug;
+if (!slug) {
+	return Astro.redirect("/blog");
+}
+
+const entries = await getCollection("blog");
+const published = entries
+	.filter((entry) => isPublishedPost(entry))
+	.sort(sortPostsByDate);
+const entry = published.find((item) => item.id === slug);
+
+if (!entry) {
+	return Astro.rewrite("/404");
+}
+
+const { Content, headings } = await render(entry);
+const related = relatedPosts(entry, published);
+---
+
+<BlogPostLayout post={entry} headings={headings} related={related}>
+	<Content
+		components={{
+			PullQuote,
+			InlineImage,
+			KeyTakeaways,
+		}}
+	/>
+</BlogPostLayout>
