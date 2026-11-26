@@ -311,12 +311,15 @@ export function serviceJsonLdNodes(origin: string): Record<string, unknown>[] {
 							"@type": "OfferCatalog",
 							name: `${full.title} inclusions`,
 							itemListElement: full.included.map((item, index) => ({
-								"@type": "Offer",
-								itemOffered: {
-									"@type": "Service",
-									name: item,
-								},
+								"@type": "ListItem",
 								position: index + 1,
+								item: {
+									"@type": "Offer",
+									itemOffered: {
+										"@type": "Service",
+										name: item,
+									},
+								},
 							})),
 						},
 					}
