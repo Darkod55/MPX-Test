@@ -36,6 +36,12 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,
+		// Required for @astrojs/node standalone — without this, /_image 404s in production
+		// and every <Image> from src/assets breaks after deploy.
+		endpoint: {
+			route: "/_image",
+			entrypoint: "astro/assets/endpoint/node",
+		},
 	},
 	integrations: [
 		// Must run before EmDash so this middleware is outermost and can
