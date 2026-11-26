@@ -21,8 +21,7 @@ export default defineConfig({
 	// Rebuild request URLs from X-Forwarded-* behind Nginx / Cloudflare
 	security: {
 		allowedDomains: [
-			{ hostname: "metapixels.co.uk" },
-			{ hostname: "www.metapixels.co.uk" },
+			{ hostname: "mpx.darkodev.zone" },
 		],
 	},
 	redirects: {

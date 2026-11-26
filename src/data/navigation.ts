@@ -41,7 +41,7 @@ export const auditBarLink: NavItem = {
 
 /**
  * Profiles from the live JSON-LD sameAs list.
- * The visible footer social container on metapixels.co.uk was empty.
+ * The visible footer social container on the previous live site was empty.
  */
 export const socialLinks: SocialLink[] = [
 	{

@@ -1,16 +1,16 @@
 ---
 title: "Privacy Policy - MetaPixels"
 highlight: "Policy"
-description: "Suggested text: Our website address is: https://metapixels.co.uk."
+description: "Suggested text: Our website address is: https://mpx.darkodev.zone."
 lastUpdated: "26 March 2024"
-intro: "This is the privacy policy published on metapixels.co.uk, including the WordPress suggested-text prefixes that were live on the page."
+intro: "This is the privacy policy for MetaPixels, including the WordPress suggested-text prefixes that were live on the page."
 draft: false
 order: 1
 ---
 
 ## Who we are
 
-**Suggested text:** Our website address is: https://metapixels.co.uk.
+**Suggested text:** Our website address is: https://mpx.darkodev.zone.
 
 ## Comments
 

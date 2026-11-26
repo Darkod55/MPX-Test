@@ -56,7 +56,7 @@ This repo is set up for xCloud’s Astro SSR flow:
 2. Confirm detection: **Node.js** app, serving mode **SSR (Node process)**.
 3. Keep start command `node ./dist/server/entry.mjs` and port `3000`.
 4. Set Node.js to **22** (matches `.nvmrc`).
-5. Paste production values from `.env.example` into xCloud’s Environment file — especially `SITE_URL`, `EMDASH_SITE_URL`, and a new `EMDASH_ENCRYPTION_KEY`.
+5. Paste production values from `.env.example` into xCloud’s Environment file — especially `SITE_URL=https://mpx.darkodev.zone`, `EMDASH_SITE_URL`, and a new `EMDASH_ENCRYPTION_KEY`.
 6. After deploy, ensure the site process can write `data.db` and `uploads/` in the app directory (EmDash needs both).
 7. Open `/_emdash/admin` once to finish CMS setup, then turn on **Auto-deploy on push**.
 
