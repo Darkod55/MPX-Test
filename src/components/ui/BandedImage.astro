@@ -151,8 +151,12 @@ const bandedWidths = [
 		inset: 0;
 	}
 
+	/*
+	 * Corner accents: original geometry, white + orange.
+	 * (Former “navy” matched --color-primary and disappeared on dark panels.)
+	 */
 	.banded-image__band--tl-navy {
-		background: var(--color-navy);
+		background: var(--color-white);
 		clip-path: polygon(0 0, 55% 0, 45% 10%, 15% 10%, 0 17%);
 	}
 
@@ -167,7 +171,7 @@ const bandedWidths = [
 	}
 
 	.banded-image__band--br-navy {
-		background: var(--color-navy);
+		background: var(--color-white);
 		clip-path: polygon(100% 90%, 100% 100%, 72% 100%);
 	}
 
@@ -177,7 +181,7 @@ const bandedWidths = [
 	}
 
 	.banded-image__band--bl-navy {
-		background: var(--color-navy);
+		background: var(--color-white);
 		clip-path: polygon(0 90%, 0 100%, 28% 100%);
 	}
 </style>

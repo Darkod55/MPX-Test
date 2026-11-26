@@ -17,7 +17,7 @@
 		{
 			"slug": "marketing_hero",
 			"label": "Hero",
-			"description": "Square Peg hero with diagonal photo panel, label, title highlight, and CTAs",
+			"description": "Hero with diagonal photo panel, label, title highlight, and CTAs",
 			"category": "Marketing",
 			"currentVersion": 2,
 			"versions": [
@@ -1525,7 +1525,7 @@
 							"_key": "hero",
 							"variant": "home",
 							"background": "primary",
-							"label": "The Square Peg Agency",
+							"label": "MetaPixels",
 							"title": "Why fit in when you can stand out?",
 							"highlight": "stand out?",
 							"subtitle": "Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.",
@@ -1576,7 +1576,7 @@
 										{
 											"_type": "span",
 											"_key": "intro-emphasis-span",
-											"text": "At The Square Peg Agency, that's exactly what we help organisations achieve.",
+											"text": "At MetaPixels, that's exactly what we help organisations achieve.",
 											"marks": []
 										}
 									],

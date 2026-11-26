@@ -6,6 +6,7 @@ import mockups from "../assets/mpx/metapixels-webpages-mockups.png";
 import jaBrooks from "../assets/mpx/metapixels-client-website-mockup-ja-brooks-1.png";
 import homeStatements from "../assets/mpx/metapixels-client-website-mockup-home-statements.png";
 import cyberone from "../assets/mpx/metapixels-client-website-mockup-cyberone.png";
+import teamPhoto from "../assets/mpx/team-photo.jpg";
 import {
 	beliefs,
 	homeCta,
@@ -44,8 +45,7 @@ export const homeHero = {
 		label: "Our services",
 		href: "/services",
 	},
-	divider: true,
-	dividerTo: "white" as const,
+	divider: false,
 };
 
 export const homeIntro = {
@@ -97,7 +97,7 @@ export const homeMoreThanAnAgency = {
 	title: moreThanAnAgency.title,
 	lead: moreThanAnAgency.lead,
 	body: moreThanAnAgency.body,
-	image: jaBrooks,
+	image: teamPhoto,
 	imageAlt: moreThanAnAgency.image.alt,
 	imagePosition: moreThanAnAgency.image.position,
 };

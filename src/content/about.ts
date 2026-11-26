@@ -22,7 +22,7 @@ export const aboutHero = {
 	highlight: "MetaPixels.",
 	subtitle: "The agency, the team and our mission.",
 	image: showcase,
-	imageAlt: "A screenshot of a group of client websites",
+	imageAlt: "A showcase of MetaPixels client web pages",
 	imagePosition: "center",
 	imageFilter: "none" as const,
 	divider: true,

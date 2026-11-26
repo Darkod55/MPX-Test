@@ -19,6 +19,17 @@ import {
 	homeMeta,
 	homeMoreThanAnAgency,
 } from "../content/home";
+import { breadcrumbListJsonLd, resolveSiteOrigin } from "../utils/seo";
+
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+
+const homeJsonLd = breadcrumbListJsonLd(origin, [
+	{ name: "Home", path: "/" },
+]);
 ---
 
 <BaseLayout
@@ -27,6 +38,7 @@ import {
 	canonicalPath={homeMeta.canonicalPath}
 	lcpImage={homeHero.image}
 	lcpVariant="home"
+	jsonLd={homeJsonLd}
 >
 	<Hero {...homeHero} />
 	<IntroStatement {...homeIntro} />

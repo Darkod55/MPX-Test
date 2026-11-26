@@ -65,7 +65,7 @@ export const moreThanAnAgency = {
 	lead: "As strategic thinkers, creative designers and logical problem-solvers, we support a diverse range of valued clients from many industries.",
 	body: "Would your business benefit from better search engine ranking? Or perhaps you need support with your social media management? Are your content pillars working hard enough for you?",
 	image: {
-		alt: "MetaPixels client website mockup JA Brooks",
+		alt: "MetaPixels core team, Merv, Dafi, Pene, Simona and Darko",
 		position: "center",
 	},
 };

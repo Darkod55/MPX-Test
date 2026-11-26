@@ -47,7 +47,7 @@ export const aboutCta = {
 	},
 };
 
-export const whySpa = {
+export const whyUs = {
 	title: "Why {choose} us?",
 	intro:
 		"Choosing the right web design agency can be a daunting process. Every business will benefit from a great brand, an amazing website, solid content pillars and effective marketing.",

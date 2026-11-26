@@ -1,6 +1,6 @@
 # Design system setup
 
-How to stand up (or rebuild) the visual system used by The Square Peg Agency Astro site. Use this when cloning the project for a new brand, or when resetting the design layer.
+How to stand up (or rebuild) the visual system used by the MetaPixels Astro site. Use this when cloning the project for a new brand, or when resetting the design layer.
 
 **Stack:** Astro · plain CSS custom properties (no Tailwind) · Fontsource self-hosted fonts · Astro components for UI/chrome.
 
@@ -78,8 +78,7 @@ Document clip-paths / sizes:
 
 | Asset | Path | Format | Usage size |
 |-------|------|--------|------------|
-| Colour logo | `src/assets/logo/tspa-color.svg` | SVG | Header ~60px (48px small; 42px when scrolled) |
-| White logo | `src/assets/logo/tspa-white.svg` | SVG | Footer ~60px (48px small) |
+| Colour / light logo | `src/assets/logo/logo-mpx-light.svg` | SVG | Header & footer ~60px (48px small; 42px when scrolled) |
 | Favicon | `public/logo.svg` | SVG | Browser tab |
 
 Social icons: stroke (or fill) SVGs in `src/components/ui/icons/`, reusable.

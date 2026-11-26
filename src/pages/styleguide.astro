@@ -9,7 +9,7 @@ import SlashMark from "../components/ui/SlashMark.astro";
 import SlashList from "../components/ui/SlashList.astro";
 import Hero from "../components/sections/Hero.astro";
 import BrandMark from "../components/ui/BrandMark.astro";
-import SquarePegGraphic from "../components/sections/SquarePegGraphic.astro";
+import BrandGraphic from "../components/sections/BrandGraphic.astro";
 import IntroStatement from "../components/sections/home/IntroStatement.astro";
 import BandedImage from "../components/ui/BandedImage.astro";
 import SplitFeature from "../components/sections/SplitFeature.astro";
@@ -21,7 +21,7 @@ import NumberedStrips from "../components/ui/NumberedStrips.astro";
 import AboutIntro from "../components/sections/about/AboutIntro.astro";
 import Team from "../components/sections/about/Team.astro";
 import TeamCard from "../components/ui/TeamCard.astro";
-import WhySpa from "../components/sections/about/WhySpa.astro";
+import WhyUs from "../components/sections/about/WhyUs.astro";
 import HowWeHelp from "../components/sections/home/HowWeHelp.astro";
 import CtaSection from "../components/sections/CtaSection.astro";
 import ServiceBlock from "../components/sections/services/ServiceBlock.astro";
@@ -103,7 +103,7 @@ const textColors = [
 ];
 
 const typeSamples = [
-	{ className: "type-display", label: "Display / hero H1", sample: "Square pegs" },
+	{ className: "type-display", label: "Display / hero H1", sample: "MetaPixels" },
 	{ className: "type-h1-page", label: "Page H1", sample: "About the agency" },
 	{ className: "type-cta", label: "CTA heading", sample: "Ready to talk?" },
 	{ className: "type-h2", label: "Section H2", sample: "What we deliver" },
@@ -257,7 +257,7 @@ const buttonSurfaces = [
 			dividerTo="white"
 		/>
 
-		<!-- Brand mark + square peg graphic -->
+		<!-- Brand mark + brand graphic -->
 		<section class="section bg-white" id="brand-mark">
 			<Container class="stack-md">
 				<SectionHeading>Brand <span class="hl">mark</span></SectionHeading>
@@ -301,15 +301,15 @@ const buttonSurfaces = [
 				</div>
 
 				<div class="stack-sm" style="margin-top: 40px">
-					<p class="type-tagline">Square peg graphic</p>
+					<p class="type-tagline">Brand graphic</p>
 					<div class="sg-mark-sizes" style="align-items: flex-start; gap: 40px">
 						<div>
 							<p class="type-meta">Navy boxes / red face</p>
-							<SquarePegGraphic animate={false} scheme="navy" />
+							<BrandGraphic animate={false} scheme="navy" />
 						</div>
 						<div>
 							<p class="type-meta">Red boxes / navy face</p>
-							<SquarePegGraphic animate={false} scheme="red" />
+							<BrandGraphic animate={false} scheme="red" />
 						</div>
 					</div>
 				</div>
@@ -457,7 +457,7 @@ const buttonSurfaces = [
 					<TeamCard
 						name="Mandy"
 						role="Founder and Chief Executive Officer"
-						bio="Mandy leads SPA's strategy and direction, working closely with clients to understand their business."
+						bio="Mandy leads MetaPixels' strategy and direction, working closely with clients to understand their business."
 						photo={homeWestminster}
 					/>
 					<TeamCard
@@ -471,7 +471,7 @@ const buttonSurfaces = [
 
 		<Team />
 
-		<WhySpa />
+		<WhyUs />
 
 		<HowWeHelp />
 

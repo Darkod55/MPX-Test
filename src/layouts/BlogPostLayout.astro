@@ -22,6 +22,7 @@ import {
 } from "../utils/blog";
 import {
 	absoluteUrl,
+	blogPostingJsonLd,
 	breadcrumbListJsonLd,
 	DEFAULT_OG_IMAGE,
 	resolveSiteOrigin,
@@ -63,32 +64,25 @@ const origin = resolveSiteOrigin({
 const pageUrl = absoluteUrl(path, origin);
 const shareImageUrl = absoluteUrl(DEFAULT_OG_IMAGE, origin);
 const authorName = member?.name ?? author;
-const authorPath = member
-	? `/all-about-metapixels#${member.slug}`
-	: "/all-about-metapixels#team";
-const authorUrl = absoluteUrl(authorPath, origin);
+const wordCount = (post.body ?? "")
+	.trim()
+	.split(/\s+/)
+	.filter(Boolean).length;
 
-const articleJsonLd = {
-	"@type": "Article",
-	"@id": `${pageUrl}#article`,
-	headline: title,
+const articleNodes = blogPostingJsonLd(origin, {
+	path,
+	title,
 	description: excerpt,
-	datePublished: publishDate.toISOString(),
-	dateModified: (updatedDate ?? publishDate).toISOString(),
-	author: {
-		"@type": "Person",
-		"@id": `${origin}/all-about-metapixels#${member?.slug ?? author}`,
-		name: authorName,
-		url: authorUrl,
-		...(member?.role ? { jobTitle: member.role } : {}),
-		worksFor: { "@id": `${origin}/#organization` },
-	},
-	publisher: { "@id": `${origin}/#organization` },
-	image: shareImageUrl,
-	mainEntityOfPage: { "@type": "WebPage", "@id": `${pageUrl}#webpage` },
-	isPartOf: { "@id": `${origin}/#website` },
-	inLanguage: "en-GB",
-};
+	datePublished: publishDate,
+	dateModified: updatedDate ?? publishDate,
+	authorSlug: member?.slug ?? author,
+	authorName,
+	authorRole: member?.role,
+	category,
+	tags,
+	imageUrl: shareImageUrl,
+	wordCount: wordCount || undefined,
+});
 
 const breadcrumbJsonLd = breadcrumbListJsonLd(origin, [
 	{ name: "Home", path: "/" },
@@ -108,7 +102,7 @@ const initial = (member?.name ?? author).trim().charAt(0).toUpperCase();
 	datePublished={publishDate}
 	dateModified={updatedDate ?? publishDate}
 	robots={draft ? "noindex" : undefined}
-	jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+	jsonLd={[...articleNodes, breadcrumbJsonLd]}
 	lcpImage={cover}
 >
 	<Hero
@@ -428,7 +422,7 @@ const initial = (member?.name ?? author).trim().charAt(0).toUpperCase();
 	.related-posts__title {
 		margin: 0;
 		font-family: var(--font-heading);
-		font-weight: 600;
+		font-weight: 700;
 		font-size: clamp(2.25rem, 3.6vw, 3.25rem);
 		line-height: 1.05;
 		text-transform: uppercase;

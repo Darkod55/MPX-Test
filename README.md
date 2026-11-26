@@ -52,7 +52,7 @@ Open http://localhost:4321/_emdash/admin and complete the setup wizard. EmDash r
 
 This repo is set up for xCloud’s Astro SSR flow:
 
-1. In xCloud: **Add New Site → Astro → Deploy via Git** and use `https://github.com/Darkod55/spa.git` (branch `main`).
+1. In xCloud: **Add New Site → Astro → Deploy via Git** and use your MetaPixels repo URL (branch `main`).
 2. Confirm detection: **Node.js** app, serving mode **SSR (Node process)**.
 3. Keep start command `node ./dist/server/entry.mjs` and port `3000`.
 4. Set Node.js to **22** (matches `.nvmrc`).

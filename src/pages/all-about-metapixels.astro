@@ -5,7 +5,7 @@ import AboutIntro from "../components/sections/about/AboutIntro.astro";
 import AboutVisible from "../components/sections/about/AboutVisible.astro";
 import Team from "../components/sections/about/Team.astro";
 import CtaSection from "../components/sections/CtaSection.astro";
-import WhySpa from "../components/sections/about/WhySpa.astro";
+import WhyUs from "../components/sections/about/WhyUs.astro";
 import {
 	aboutHero,
 	aboutIntro,
@@ -13,18 +13,39 @@ import {
 	aboutVisible,
 } from "../content/about";
 import { aboutCta } from "../data/about";
+import {
+	breadcrumbListJsonLd,
+	resolveSiteOrigin,
+	teamPersonJsonLdNodes,
+} from "../utils/seo";
+
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+
+const aboutJsonLd = [
+	breadcrumbListJsonLd(origin, [
+		{ name: "Home", path: "/" },
+		{ name: "About", path: "/all-about-metapixels" },
+	]),
+	...teamPersonJsonLdNodes(origin),
+];
 ---
 
 <BaseLayout
 	title={aboutMeta.title}
 	description={aboutMeta.description}
 	canonicalPath="/all-about-metapixels"
+	pageType="AboutPage"
 	lcpImage={aboutHero.image}
+	jsonLd={aboutJsonLd}
 >
 	<Hero {...aboutHero} />
 	<AboutIntro {...aboutIntro} />
 	<AboutVisible {...aboutVisible} />
 	<Team title="A {dedicated} team" />
 	<CtaSection {...aboutCta} />
-	<WhySpa />
+	<WhyUs />
 </BaseLayout>

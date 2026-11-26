@@ -23,6 +23,7 @@ import {
 	toSchemaDate,
 	webPageJsonLd,
 	type JsonLd,
+	type WebPageType,
 } from "../utils/seo";
 
 interface Props {
@@ -39,6 +40,8 @@ interface Props {
 	datePublished?: string | Date;
 	/** Machine-readable last-modified date for WebPage JSON-LD */
 	dateModified?: string | Date;
+	/** Schema.org @type for the page node (default WebPage) */
+	pageType?: WebPageType;
 	/** Extra JSON-LD nodes merged into the site @graph (Organization + WebSite always included) */
 	jsonLd?: JsonLd;
 	/** Hide the red audit announcement bar */
@@ -58,6 +61,7 @@ const {
 	robots,
 	datePublished = SITE_LAUNCH_DATE,
 	dateModified = datePublished,
+	pageType = "WebPage",
 	jsonLd,
 	showAuditBar = true,
 	lcpImage,
@@ -93,6 +97,7 @@ const extraNodes: Record<string, unknown>[] = [
 		description: metaDescription,
 		datePublished: schemaPublished,
 		dateModified: schemaModified,
+		type: pageType,
 	}),
 ];
 

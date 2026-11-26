@@ -47,7 +47,7 @@ const {
 
 const titleHtml = highlightBraces(title);
 
-const stepTones: SteppedLabelTone[] = ["white", "red", "royal"];
+const stepTones: SteppedLabelTone[] = ["white", "red", "outline"];
 const stepItems: SteppedLabelItem[] = steps.map((text, index) => ({
 	text,
 	tone: stepTones[index] ?? "navy",
@@ -180,7 +180,7 @@ const serviceItems: NumberedStripItem[] = services.map((item) => ({
 		margin: 0;
 		font-family: var(--font-heading);
 		font-size: var(--fs-h2-lg);
-		font-weight: 600;
+		font-weight: 700;
 		line-height: 0.98;
 		text-transform: uppercase;
 		color: var(--color-white);

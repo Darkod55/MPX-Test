@@ -13,13 +13,18 @@ import { highlightBraces } from "../utils/highlight";
 import {
 	BLOG_CATEGORIES,
 	BLOG_PAGE_SIZE,
+	blogPostPath,
 	filterPostsByCategory,
 	getFeaturedPost,
 	getPublishedPosts,
 	getUsedCategories,
 	paginatePosts,
 } from "../utils/blog";
-import { breadcrumbListJsonLd, resolveSiteOrigin } from "../utils/seo";
+import {
+	blogItemListJsonLd,
+	breadcrumbListJsonLd,
+	resolveSiteOrigin,
+} from "../utils/seo";
 
 const allEntries = await getCollection("blog");
 const published = getPublishedPosts(allEntries);
@@ -51,16 +56,26 @@ const origin = resolveSiteOrigin({
 	requestOrigin: Astro.url.origin,
 	headers: Astro.request.headers,
 });
-const blogJsonLd = breadcrumbListJsonLd(origin, [
-	{ name: "Home", path: "/" },
-	{ name: "Blog", path: "/blog" },
-]);
+const blogJsonLd = [
+	breadcrumbListJsonLd(origin, [
+		{ name: "Home", path: "/" },
+		{ name: "Blog", path: "/blog" },
+	]),
+	blogItemListJsonLd(
+		origin,
+		published.map((post) => ({
+			path: blogPostPath(post.id),
+			title: post.data.title,
+		})),
+	),
+];
 ---
 
 <BaseLayout
 	title={blogMeta.title}
 	description={blogMeta.description}
 	canonicalPath="/blog"
+	pageType="CollectionPage"
 	lcpImage={blogHero.image}
 	jsonLd={blogJsonLd}
 >
@@ -170,7 +185,7 @@ const blogJsonLd = breadcrumbListJsonLd(origin, [
 	.blog-latest__title {
 		margin: 0;
 		font-family: var(--font-heading);
-		font-weight: 600;
+		font-weight: 700;
 		font-size: clamp(2.25rem, 3.6vw, 3.25rem);
 		line-height: 1.05;
 		text-transform: uppercase;

@@ -6,6 +6,7 @@ import Label from "../components/ui/Label.astro";
 import LegalContents from "../components/legal/LegalContents.astro";
 import SlantedDivider from "../components/ui/SlantedDivider.astro";
 import { parseLegalDate } from "../utils/legalDates";
+import { breadcrumbListJsonLd, resolveSiteOrigin } from "../utils/seo";
 import "../styles/legal.css";
 
 interface Props {
@@ -30,6 +31,17 @@ const {
 	headings,
 } = Astro.props;
 
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+const legalPath = Astro.url.pathname;
+const legalJsonLd = breadcrumbListJsonLd(origin, [
+	{ name: "Home", path: "/" },
+	{ name: title, path: legalPath },
+]);
+
 function titleWithHighlight(full: string, hl?: string) {
 	if (!hl) return [{ type: "text" as const, value: full }];
 	const idx = full.toLowerCase().indexOf(hl.toLowerCase());
@@ -51,9 +63,11 @@ const effectiveFromIso = effectiveFrom
 <BaseLayout
 	title={title}
 	description={description}
+	canonicalPath={legalPath}
 	datePublished={effectiveFromIso ?? lastUpdatedIso}
 	dateModified={lastUpdatedIso}
 	robots={draft ? "noindex" : undefined}
+	jsonLd={legalJsonLd}
 >
 	<section id="top" class="legal-hero">
 		<div class="legal-hero__deco" aria-hidden="true">

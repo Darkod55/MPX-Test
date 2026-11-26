@@ -23,36 +23,67 @@ const logos = [
 ---
 
 <section class="client-logos" aria-label="Clients">
-	<ul class="container">
-		{
-			logos.map((logo) => (
-				<li>
-					<img src={logo.src} alt={logo.alt} width="160" height="48" />
-				</li>
-			))
-		}
-	</ul>
+	{/* Native .container — scoped styles on the list must not override it */}
+	<div class="container">
+		<ul class="client-logos__list">
+			{
+				logos.map((logo) => (
+					<li class="client-logos__item">
+						<img src={logo.src} alt={logo.alt} width="220" height="72" />
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </section>
 
 <style>
 	.client-logos {
 		background: var(--color-primary);
-		padding-block: 2rem 3rem;
+		padding-block: 2.5rem 3.5rem;
 	}
 
-	.client-logos ul {
+	.client-logos__list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		align-items: center;
+		justify-items: center;
+		column-gap: 3rem;
+		row-gap: 2.75rem;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.client-logos__item {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		gap: 1.5rem 2rem;
+		width: 100%;
 		margin: 0;
+		text-align: center;
 	}
 
-	.client-logos img {
+	.client-logos__item img {
 		display: block;
 		width: auto;
-		max-width: 140px;
-		max-height: 48px;
+		max-width: min(100%, 240px);
+		max-height: 80px;
+		margin-inline: auto;
+		object-fit: contain;
+	}
+
+	@media (max-width: 639px) {
+		.client-logos__list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: 1.5rem;
+			row-gap: 2rem;
+		}
+
+		.client-logos__item img {
+			max-width: min(100%, 180px);
+			max-height: 64px;
+		}
 	}
 </style>

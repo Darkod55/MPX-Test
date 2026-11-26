@@ -2,13 +2,32 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import ContactSection from "../components/sections/contact/ContactSection.astro";
-import showcase from "../assets/mpx/metapixels-webpages-mockups.png";
+import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
+import {
+	breadcrumbListJsonLd,
+	performanceAuditServiceJsonLd,
+	resolveSiteOrigin,
+} from "../utils/seo";
 
 const meta = {
 	title: "Free Website Performance Audit, by MetaPixels",
 	description:
 		"Is your site slow or struggling to rank in Google? In need of search engine optimisation? Get the answers with your free website performance audit.",
 };
+
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+
+const auditJsonLd = [
+	breadcrumbListJsonLd(origin, [
+		{ name: "Home", path: "/" },
+		{ name: "Performance audit", path: "/performance-audit" },
+	]),
+	performanceAuditServiceJsonLd(origin),
+];
 ---
 
 <BaseLayout
@@ -17,6 +36,7 @@ const meta = {
 	canonicalPath="/performance-audit"
 	ogImage="/metapixels-social-card.jpg"
 	lcpImage={showcase}
+	jsonLd={auditJsonLd}
 >
 	<Hero
 		variant="page"
@@ -26,7 +46,7 @@ const meta = {
 		highlight="AI and SEO."
 		subtitle="Get a clear plan for your company's website."
 		image={showcase}
-		imageAlt="Mockups of websites designed by MetaPixels"
+		imageAlt="A showcase of MetaPixels client web pages"
 		primaryCta={{ label: "Get my audit", href: "#web-perf-form" }}
 		divider
 		dividerTo="white"

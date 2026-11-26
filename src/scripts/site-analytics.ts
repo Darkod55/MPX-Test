@@ -184,7 +184,7 @@
 	}
 
 	function clickType(anchor: HTMLAnchorElement): string {
-		const explicit = (anchor.getAttribute("data-spa-track") || "").trim();
+		const explicit = (anchor.getAttribute("data-mp-track") || "").trim();
 		if (explicit) return explicit;
 
 		const href = anchor.getAttribute("href") || "";
@@ -204,7 +204,7 @@
 	}
 
 	function clickLocation(anchor: HTMLAnchorElement): string {
-		const explicit = (anchor.getAttribute("data-spa-location") || "").trim();
+		const explicit = (anchor.getAttribute("data-mp-location") || "").trim();
 		if (explicit) return explicit;
 		if (anchor.closest("#site-chrome, .site-header, header")) return "Header";
 		if (anchor.closest(".site-footer, footer")) return "Footer";

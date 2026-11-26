@@ -1,5 +1,5 @@
 ---
-export type SteppedLabelTone = "white" | "navy" | "red" | "royal";
+export type SteppedLabelTone = "white" | "navy" | "red" | "royal" | "outline";
 
 export type SteppedLabelItem = {
 	text: string;
@@ -74,6 +74,14 @@ const Tag = ordered ? "ol" : "ul";
 
 	.stepped-labels__item {
 		--slant: 12px;
+		--label-clip: polygon(
+			var(--slant) 0,
+			100% 0,
+			calc(100% - var(--slant)) 100%,
+			0 100%
+		);
+		position: relative;
+		z-index: 0;
 		box-sizing: border-box;
 		align-self: flex-start;
 		margin: 0;
@@ -84,12 +92,7 @@ const Tag = ordered ? "ol" : "ul";
 		letter-spacing: 0.04em;
 		line-height: 1.2;
 		text-transform: uppercase;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
+		clip-path: var(--label-clip);
 	}
 
 	.stepped-labels--md .stepped-labels__item {
@@ -120,6 +123,34 @@ const Tag = ordered ? "ol" : "ul";
 	.stepped-labels__item--royal {
 		background: var(--color-royal);
 		color: var(--color-white);
+	}
+
+	/* White fill + orange edge — dual clip layers (borders don’t follow clip-path) */
+	.stepped-labels__item--outline {
+		--outline-w: 2px;
+		background: transparent;
+		color: var(--color-navy);
+		clip-path: none;
+	}
+
+	.stepped-labels__item--outline::before,
+	.stepped-labels__item--outline::after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	.stepped-labels__item--outline::before {
+		inset: 0;
+		background: var(--color-red);
+		clip-path: var(--label-clip);
+	}
+
+	.stepped-labels__item--outline::after {
+		inset: var(--outline-w);
+		background: var(--color-white);
+		clip-path: var(--label-clip);
 	}
 
 	.stepped-labels--on-navy .stepped-labels__item--royal {

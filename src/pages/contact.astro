@@ -2,14 +2,40 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import ContactSection from "../components/sections/contact/ContactSection.astro";
-import { contactHero, contactMeta, contactReasons } from "../content/contact";
+import {
+	contactFaqs,
+	contactHero,
+	contactMeta,
+	contactReasons,
+} from "../content/contact";
+import {
+	breadcrumbListJsonLd,
+	faqPageJsonLd,
+	resolveSiteOrigin,
+} from "../utils/seo";
+
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+
+const contactJsonLd = [
+	breadcrumbListJsonLd(origin, [
+		{ name: "Home", path: "/" },
+		{ name: "Contact", path: "/contact" },
+	]),
+	faqPageJsonLd(origin, "/contact", [...contactFaqs]),
+];
 ---
 
 <BaseLayout
 	title={contactMeta.title}
 	description={contactMeta.description}
 	canonicalPath="/contact"
+	pageType="ContactPage"
 	lcpImage={contactHero.image}
+	jsonLd={contactJsonLd}
 >
 	<Hero {...contactHero} />
 	<section class="contact-reasons">
@@ -22,22 +48,14 @@ import { contactHero, contactMeta, contactReasons } from "../content/contact";
 				{contactReasons.map((reason) => <li>{reason}</li>)}
 			</ol>
 			<h3>FAQs</h3>
-			<h4>What exactly does MetaPixels do?</h4>
-			<p>
-				MetaPixels is a full-service digital agency. We provide branding and rebranding, design and web design, web development, WordPress and plugin development, hosting and site management, API integration, search engine optimisation, content marketing, digital auditing, paid search and social ads, and social media management.
-			</p>
-			<h4>Does MetaPixels work with any business?</h4>
-			<p>
-				Yes, we work with any business that is serious about investing in their company and understands that they have to invest in the digital presence to get the right returns from it.
-			</p>
-			<h4>Are there businesses MetaPixels doesn't work with?</h4>
-			<p>
-				Yes. We are not a charity. It is not viable for us to work with companies that expect our time and expertise without having the marketing budget to support it.
-			</p>
-			<h4>Can MetaPixels work in other languages and timezones?</h4>
-			<p>
-				Yes. We can work in any timezones, but there are some challenges, such as limited contact and small windows where the working days overlap.
-			</p>
+			{
+				contactFaqs.map((faq) => (
+					<>
+						<h4>{faq.question}</h4>
+						<p>{faq.answer}</p>
+					</>
+				))
+			}
 		</div>
 	</section>
 	<ContactSection />

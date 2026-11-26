@@ -25,7 +25,7 @@ The old Halden marketing demo content has been cleared to simple page stubs. Sha
 
 Tokens use CSS variables on `:root`. Many defaults support light and dark via `light-dark(light, dark)`.
 
-In `theme.css` we currently set plain values (same in both modes) using Square Peg navy / red from the logo:
+In `theme.css` we currently set plain values (same in both modes) using MetaPixels navy / red from the logo:
 
 ```css
 :root {

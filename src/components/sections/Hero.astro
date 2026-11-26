@@ -16,7 +16,6 @@ import {
 import Container from "../ui/Container.astro";
 import Label from "../ui/Label.astro";
 import Button from "../ui/Button.astro";
-import HeroSquares from "../ui/HeroSquares.astro";
 import SlantedDivider from "../ui/SlantedDivider.astro";
 
 interface Cta {
@@ -175,10 +174,7 @@ const highlightColor =
 	<div class="hero__bands" aria-hidden="true">
 		<div class="hero__band hero__band--tertiary"></div>
 		<div class="hero__band hero__band--secondary"></div>
-		{variant === "home" && <div class="hero__band hero__band--primary-tr"></div>}
-		<div class="hero__band hero__band--secondary-br"></div>
 		<div class="hero__band hero__band--mobile-edge"></div>
-		{variant === "home" && <HeroSquares />}
 	</div>
 
 	<div class="hero__content">
@@ -191,7 +187,7 @@ const highlightColor =
 				)}
 
 				{label && (
-					<Label variant="red" animate={true}>
+					<Label variant="red" animate={true} uppercase={variant !== "home"}>
 						{label}
 					</Label>
 				)}
@@ -354,16 +350,6 @@ const highlightColor =
 		clip-path: polygon(61.6% 0, 63.6% 0, 48% 100%, 46% 100%);
 	}
 
-	.hero--home .hero__band--primary-tr {
-		background: var(--color-primary);
-		clip-path: polygon(84% 0, 100% 0, 100% 26%);
-	}
-
-	.hero--home .hero__band--secondary-br {
-		background: var(--color-secondary);
-		clip-path: polygon(100% 64%, 100% 100%, 74% 100%);
-	}
-
 	.hero--page .hero__band--tertiary {
 		background: var(--color-tertiary);
 		clip-path: polygon(66% 0, 68.4% 0, 52.8% 100%, 50.4% 100%);
@@ -372,11 +358,6 @@ const highlightColor =
 	.hero--page .hero__band--secondary {
 		background: var(--color-secondary);
 		clip-path: polygon(69.6% 0, 71.6% 0, 56% 100%, 54% 100%);
-	}
-
-	.hero--page .hero__band--secondary-br {
-		background: var(--color-secondary);
-		clip-path: polygon(100% 66%, 100% 100%, 80% 100%);
 	}
 
 	.hero__band--mobile-edge {
@@ -474,7 +455,7 @@ const highlightColor =
 	.hero__subtitle {
 		margin: 0;
 		font-family: var(--font-body);
-		font-weight: 500;
+		font-weight: 400;
 		color: inherit;
 		opacity: 0.92;
 		max-width: 36rem;
@@ -577,10 +558,9 @@ const highlightColor =
 			order: 2;
 		}
 
-		/* Hide long desktop stripes; keep mobile edge + corner on the photo */
+		/* Hide long desktop stripes; keep mobile edge on the photo */
 		.hero__band--tertiary,
-		.hero__band--secondary,
-		.hero__band--primary-tr {
+		.hero__band--secondary {
 			display: none;
 		}
 
@@ -611,12 +591,6 @@ const highlightColor =
 				100% calc(var(--hero-top-inset) + 1px),
 				0 calc(var(--hero-slant-y) + var(--hero-top-inset) + 1px)
 			);
-		}
-
-		.hero__band--secondary-br {
-			display: block;
-			background: var(--color-secondary);
-			clip-path: polygon(100% 66%, 100% 100%, 80% 100%);
 		}
 
 	}

@@ -1,7 +1,7 @@
 /**
  * Services page content — passed as props into theme section components.
  */
-import brandCard from "../assets/mpx/mpx-brand-card.png";
+import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
 import { serviceIndex } from "../data/services";
 
 export const servicesMeta = {
@@ -17,8 +17,8 @@ export const servicesHero = {
 	title: "Our extensive range of digital services.",
 	highlight: "digital services.",
 	subtitle: "End-to-end digital solutions across technology, design and marketing.",
-	image: brandCard,
-	imageAlt: "MetaPixels brand card",
+	image: showcase,
+	imageAlt: "A showcase of MetaPixels client web pages",
 	imagePosition: "center",
 	imageFilter: "none" as const,
 	divider: true,

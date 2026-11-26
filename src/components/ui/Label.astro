@@ -4,6 +4,8 @@ interface Props {
 	size?: "default" | "small" | "sm";
 	/** Pill visible on load; letters stagger in (honours reduced motion). */
 	animate?: boolean;
+	/** Keep source casing (e.g. MetaPixels). Default uppercases like other labels. */
+	uppercase?: boolean;
 	class?: string;
 	as?: "span" | "div" | "p";
 }
@@ -12,6 +14,7 @@ const {
 	variant = "red",
 	size: sizeProp = "default",
 	animate = false,
+	uppercase = true,
 	class: className = "",
 	as: Tag = "span",
 } = Astro.props;
@@ -29,6 +32,7 @@ const chars = animate ? Array.from(plainText) : null;
 		`label--${variant}`,
 		`label--${size}`,
 		animate && "label--animate",
+		!uppercase && "label--preserve-case",
 		className,
 	]}
 >
@@ -67,6 +71,11 @@ const chars = animate ? Array.from(plainText) : null;
 			0 100%
 		);
 		white-space: nowrap;
+	}
+
+	.label--preserve-case {
+		text-transform: none;
+		letter-spacing: 0.04em;
 	}
 
 	.label__text {

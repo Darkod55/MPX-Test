@@ -18,46 +18,46 @@ const { class: className, scheme = "navy", animate = true } = Astro.props;
 
 <div
 	class:list={[
-		"sp-graphic",
-		`sp-graphic--${scheme}`,
-		animate && "sp-graphic--animate",
+		"mp-graphic",
+		`mp-graphic--${scheme}`,
+		animate && "mp-graphic--animate",
 		className,
 	]}
 	aria-hidden="true"
 >
-	<div class="sp-graphic__grid">
+	<div class="mp-graphic__grid">
 		<span></span>
 		<span></span>
 		<span></span>
 		<span></span>
 	</div>
-	<div class="sp-graphic__tilt">
+	<div class="mp-graphic__tilt">
 		<TiltedMark
 			size="100%"
 			outline="9px"
 			angle="-15deg"
-			faceColour="var(--sp-face)"
-			class="sp-graphic__mark"
+			faceColour="var(--mp-face)"
+			class="mp-graphic__mark"
 		/>
 	</div>
 </div>
 
 <style>
-	.sp-graphic {
-		--sp-box: var(--color-navy);
-		--sp-face: var(--color-red);
+	.mp-graphic {
+		--mp-box: var(--color-navy);
+		--mp-face: var(--color-red);
 		position: relative;
 		width: clamp(220px, 28vw, 300px);
 		aspect-ratio: 1 / 1;
 		flex: none;
 	}
 
-	.sp-graphic--red {
-		--sp-box: var(--color-red);
-		--sp-face: var(--color-navy);
+	.mp-graphic--red {
+		--mp-box: var(--color-red);
+		--mp-face: var(--color-navy);
 	}
 
-	.sp-graphic__grid {
+	.mp-graphic__grid {
 		position: absolute;
 		inset: 0;
 		display: grid;
@@ -66,12 +66,12 @@ const { class: className, scheme = "navy", animate = true } = Astro.props;
 		gap: 14px;
 	}
 
-	.sp-graphic__grid > span {
+	.mp-graphic__grid > span {
 		display: block;
-		background: var(--sp-box);
+		background: var(--mp-box);
 	}
 
-	.sp-graphic__tilt {
+	.mp-graphic__tilt {
 		position: absolute;
 		left: 50%;
 		top: 50%;
@@ -80,23 +80,23 @@ const { class: className, scheme = "navy", animate = true } = Astro.props;
 		transform: translate(-50%, -50%);
 	}
 
-	.sp-graphic__tilt :global(.sp-graphic__mark) {
+	.mp-graphic__tilt :global(.mp-graphic__mark) {
 		width: 100%;
 		height: 100%;
 	}
 
 	@media (max-width: 639px) {
-		.sp-graphic__grid {
+		.mp-graphic__grid {
 			gap: 10px;
 		}
 
-		.sp-graphic__tilt :global(.sp-graphic__mark) {
+		.mp-graphic__tilt :global(.mp-graphic__mark) {
 			padding: 6px;
 		}
 	}
 
 	/* Entrance: start upright + faded; settle to -15deg when .is-inview */
-	.sp-graphic--animate .sp-graphic__tilt :global(.sp-graphic__mark) {
+	.mp-graphic--animate .mp-graphic__tilt :global(.mp-graphic__mark) {
 		opacity: 0;
 		transform: rotate(0deg);
 		transition:
@@ -104,14 +104,14 @@ const { class: className, scheme = "navy", animate = true } = Astro.props;
 			transform 400ms ease-out;
 	}
 
-	.sp-graphic--animate.is-inview .sp-graphic__tilt :global(.sp-graphic__mark),
-	.sp-graphic--animate:not(.sp-graphic--js) .sp-graphic__tilt :global(.sp-graphic__mark) {
+	.mp-graphic--animate.is-inview .mp-graphic__tilt :global(.mp-graphic__mark),
+	.mp-graphic--animate:not(.mp-graphic--js) .mp-graphic__tilt :global(.mp-graphic__mark) {
 		opacity: 1;
 		transform: rotate(-15deg);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.sp-graphic--animate .sp-graphic__tilt :global(.sp-graphic__mark) {
+		.mp-graphic--animate .mp-graphic__tilt :global(.mp-graphic__mark) {
 			opacity: 1;
 			transform: rotate(-15deg);
 			transition: none;
@@ -122,9 +122,9 @@ const { class: className, scheme = "navy", animate = true } = Astro.props;
 {
 	animate && (
 		<script>
-			const roots = document.querySelectorAll(".sp-graphic--animate");
+			const roots = document.querySelectorAll(".mp-graphic--animate");
 			for (const root of roots) {
-				root.classList.add("sp-graphic--js");
+				root.classList.add("mp-graphic--js");
 			}
 
 			if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

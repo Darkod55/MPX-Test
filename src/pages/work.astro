@@ -5,20 +5,43 @@ import CtaSection from "../components/sections/CtaSection.astro";
 import CaseStudy from "../components/sections/work/CaseStudy.astro";
 import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
 import { caseStudies } from "../data/work";
+import {
+	breadcrumbListJsonLd,
+	resolveSiteOrigin,
+	workCaseStudyJsonLdNodes,
+	workItemListJsonLd,
+} from "../utils/seo";
 
 const workMeta = {
 	title: "Our Work - Branding, Web Design, SEO and More - MetaPixels",
 	description:
 		"Take a look at our work and you'll see why we're a great choice for everything from branding and web design, to web development, SEO and digital marketing.",
 };
+
+const origin = resolveSiteOrigin({
+	configured: Astro.site,
+	requestOrigin: Astro.url.origin,
+	headers: Astro.request.headers,
+});
+
+const workJsonLd = [
+	breadcrumbListJsonLd(origin, [
+		{ name: "Home", path: "/" },
+		{ name: "Work", path: "/work" },
+	]),
+	workItemListJsonLd(origin, caseStudies),
+	...workCaseStudyJsonLdNodes(origin, caseStudies),
+];
 ---
 
 <BaseLayout
 	title={workMeta.title}
 	description={workMeta.description}
 	canonicalPath="/work"
+	pageType="CollectionPage"
 	ogImage="/metapixels-social-card.jpg"
 	lcpImage={showcase}
+	jsonLd={workJsonLd}
 >
 	<Hero
 		variant="page"
