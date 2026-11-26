@@ -1,39 +1,54 @@
-import { serviceIndex } from "./services";
-
 export const contactPanel = {
-	title: "Get in {touch}",
+	title: "Our {offices}",
 	intro:
-		"Prefer to talk first? Reach us directly — or send a message and we’ll come back to you.",
+		"Start your journey towards accelerated business growth here. Simply fill in this form and one of our team will be in touch within 24 hours.",
 	details: [
 		{
 			icon: "email" as const,
 			label: "Email",
-			value: "hello@thesquarepeg.agency",
-			href: "mailto:hello@thesquarepeg.agency",
+			value: "info@metapixels.co.uk",
+			href: "mailto:info@metapixels.co.uk",
+		},
+		{
+			icon: "phone" as const,
+			label: "Phone",
+			value: "+44 333 360 8302",
+			href: "tel:+443333608302",
 		},
 		{
 			icon: "location" as const,
-			label: "Registered office",
-			value: [
-				"71-75 Shelton Street",
-				"Covent Garden, London",
-				"WC2H 9JQ",
-			],
+			label: "UK Offices",
+			value: ["Maidstone, Kent", "UK"],
 		},
-		// Phone hidden until confirmed — restore here when ready.
-		// {
-		// 	icon: "phone" as const,
-		// 	label: "Phone",
-		// 	value: "[+44 (0)000 000 0000]",
-		// 	href: "tel:+440000000000",
-		// },
+		{
+			icon: "location" as const,
+			label: "European Offices",
+			value: ["Skopje", "NMK"],
+		},
 	],
 };
 
 export const contactForm = {
-	title: "Send us a {message}",
-	intro: "Tell us a little about your organisation and what you need help with.",
-	services: [...serviceIndex.map((item) => item.title), "Other"],
+	title: "Make an {enquiry}",
+	intro: "Simply fill in this form and one of our team will be in touch within 24 hours.",
+	services: [] as string[],
 	privacyHref: "/privacy-policy",
-	submitLabel: "Send message",
+	submitLabel: "Submit",
+	messageLabel: "How can we help?",
+	messageRequired: false,
+	successTitle: "Thank you for contacting us.",
+	successBody: "One of the team will be in touch shortly.",
+};
+
+export const auditForm = {
+	title: "Get your free {audit}",
+	intro: "Simply fill in the form and get your free audit! Spam and bots will be automatically deleted.",
+	services: [] as string[],
+	privacyHref: "/privacy-policy",
+	submitLabel: "Submit",
+	messageLabel: "Provide any information that can help us with the audit",
+	messageRequired: false,
+	successTitle: "Thank you.",
+	successBody:
+		"Your request for a website audit has been sent. One of the team will get back to you within one working day. Please call us on 01622 371188 if you have any questions.",
 };

@@ -7,42 +7,64 @@ export type TeamMember = {
 	hidden?: boolean;
 };
 
-/** About page team — order is deliberate (grid fill order). */
+/**
+ * About page team, in the order published on /all-about-metapixels/.
+ * No individual headshots were on the site. Cards use the template placeholder.
+ * "Pene" appears only in the group photo filename and alt text, with no role or bio.
+ */
 export const team: TeamMember[] = [
 	{
-		slug: "mandy",
-		name: "Mandy",
-		role: "Founder and Chief Executive Officer",
-		bio: "Mandy leads SPA's strategy and direction, working closely with clients to understand their business, identify opportunities and shape marketing that supports where they want to go. She oversees the agency's strategic work while keeping a close eye on standards, ideas and delivery.",
+		slug: "merv",
+		name: "Merv",
+		role: "MD & Growth Strategist",
+		bio: "Merv is detail-oriented and client-focused with over 20 years of business and marketing experience, deep SEO and PPC expertise, and a degree in computer science. He takes time to understand each client, then shapes practical strategies for real growth.",
 	},
 	{
 		slug: "darko",
 		name: "Darko",
-		role: "Chief Technology Officer",
-		bio: "Darko is a PHP, Laravel and WordPress developer with over a decade of experience building websites and web applications. He leads SPA's technology and development, finding practical solutions to complex problems and making sure everything we build works as well as it looks.",
+		role: "Head of Development",
+		bio: "Darko is a PHP, Laravel and WordPress developer with over a decade of experience building robust websites and web applications. Proactive, responsive and practical, he resolves issues quickly and creates reliable, user-friendly solutions that simply work.",
 	},
 	{
-		slug: "kyle",
-		name: "Kyle",
-		role: "Project Manager",
-		bio: "Kyle manages projects, tracks tasks and deadlines, and coordinates the moving parts of client delivery. He helps keep communication clear, work organised, and projects progressing smoothly from one stage to the next.",
+		slug: "dafina",
+		name: "Dafina",
+		role: "Head of Content",
+		bio: "Dafi leads content strategy with a strong marketing background and impressive organisational skills. She keeps projects moving, brings structure to campaigns and turns ideas into clear, purposeful content. She's often sharing behind-the-scenes team moments, too.",
 	},
 	{
-		slug: "slobodanka",
-		name: "Slobodanka",
-		role: "Graphic Designer",
-		bio: "Slobodanka turns ideas into strong visual imagery across digital and print. From social content and campaign assets to websites, publications and wider brand applications, the focus is always on design that communicates clearly and feels cohesive.",
+		slug: "simona",
+		name: "Simona",
+		role: "Head of Creative",
+		bio: "Simona leads creative output. She's process driven and specialises in branding, graphic design and UI for websites and webapps. She uses Figma and Adobe tools to create polished design across social assets, iconography, brochures and full brand systems.",
 	},
 	{
-		slug: "niall",
-		name: "Niall",
-		role: "PPC Specialist",
-		bio: "Niall leads paid search and PPC, using data, audience insight and continual optimisation to make advertising budgets work harder. He focuses on reaching the right people at the right time and turning paid activity into measurable business results.",
+		slug: "pavel",
+		name: "Pavel",
+		role: "Head of Social Media",
+		bio: "Pavel manages and grows social media accounts with a clear, strategic approach. He helps businesses connect with their audience through thoughtful organic content, consistent planning and well-executed paid campaigns across the right channels.",
 	},
 	{
-		slug: "marco",
-		name: "Marco",
-		role: "Videographer",
-		bio: "Marco creates video content that helps brands communicate with personality and purpose. From interviews and social content to campaign and brand video, he combines creative storytelling with a strong understanding of what footage needs to achieve once it leaves the edit.",
+		slug: "ben",
+		name: "Ben",
+		role: "Filmography Partner",
+		bio: "Ben creates film, photography and drone footage with a storyteller's eye. He's versatile, thoughtful and easy to work with. He asks key questions and listens carefully to what each client needs, then captures visuals that feel natural, useful and on-brand.",
+	},
+	{
+		slug: "faye",
+		name: "Faye",
+		role: "Content Associate",
+		bio: "Faye is a content writer and editor with over eight years of experience across web and print. She helps businesses tell their stories clearly and engagingly, shaping content around audience, tone and purpose so every message feels considered and useful.",
+	},
+	{
+		slug: "jake",
+		name: "Jake",
+		role: "Designer & Illustrator",
+		bio: "Jake is a graphic designer and illustrator with over a decade of experience in branding and design for web and print. With a precise eye and strong Adobe expertise, he creates visually engaging work that bring ideas to life with clarity, character and impact.",
+	},
+	{
+		slug: "goran",
+		name: "Goran",
+		role: "Branding & Design",
+		bio: "Goran lives and breathes branding, possibly Pantone codes too. He focuses on creating distinctive, memorable brand identities and passionately explores how AI can enhance image generation, visual experimentation and the wider creative process.",
 	},
 ];

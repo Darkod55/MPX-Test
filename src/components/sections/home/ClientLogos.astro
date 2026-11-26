@@ -1,0 +1,58 @@
+---
+import threeCounties from "../../../assets/mpx/metapixels-client-logo-white-three-counties.svg?url";
+import learnChess from "../../../assets/mpx/metapixels-client-logo-white-learn-chess.svg?url";
+import homeStatements from "../../../assets/mpx/metapixels-client-logo-white-home-statements.svg?url";
+import jfa from "../../../assets/mpx/metapixels-client-logo-white-jfa.svg?url";
+import jaBrooks from "../../../assets/mpx/metapixels-client-logo-white-ja-brooks.svg?url";
+import seTennis from "../../../assets/mpx/metapixels-client-logo-white-se-tennis.svg?url";
+import gameon from "../../../assets/mpx/metapixels-client-logo-white-gameon-daily.svg?url";
+import drBodani from "../../../assets/mpx/metapixels-client-logo-white-dr-bodani.svg?url";
+import cyberone from "../../../assets/mpx/metapixels-client-logo-white-cyberone.svg?url";
+
+const logos = [
+	{ src: threeCounties, alt: "MetaPixels client logo white Three Counties" },
+	{ src: learnChess, alt: "MetaPixels client logo white Learn Chess Academy" },
+	{ src: homeStatements, alt: "MetaPixels client logo white Home Statements" },
+	{ src: jfa, alt: "MetaPixels client logo white JF Automotive" },
+	{ src: jaBrooks, alt: "MetaPixels client logo white JA Brooks" },
+	{ src: seTennis, alt: "MetaPixels client logo white SE Tennis" },
+	{ src: gameon, alt: "MetaPixels client logo white Gameon Daily" },
+	{ src: drBodani, alt: "MetaPixels client logo white Dr Bodani" },
+	{ src: cyberone, alt: "MetaPixels client logo white CyberOne" },
+];
+---
+
+<section class="client-logos" aria-label="Clients">
+	<ul class="container">
+		{
+			logos.map((logo) => (
+				<li>
+					<img src={logo.src} alt={logo.alt} width="160" height="48" />
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<style>
+	.client-logos {
+		background: var(--color-primary);
+		padding-block: 2rem 3rem;
+	}
+
+	.client-logos ul {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem 2rem;
+		margin: 0;
+	}
+
+	.client-logos img {
+		display: block;
+		width: auto;
+		max-width: 140px;
+		max-height: 48px;
+	}
+</style>

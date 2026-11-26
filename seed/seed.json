@@ -7,8 +7,8 @@
 		"author": "EmDash"
 	},
 	"settings": {
-		"title": "Halden",
-		"tagline": "Energy intelligence for commercial buildings",
+		"title": "MetaPixels",
+		"tagline": "The marketing agency for growth",
 		"seo": {
 			"titleSeparator": "—"
 		}
@@ -1515,7 +1515,7 @@
 			{
 				"id": "home",
 				"slug": "home",
-				"status": "published",
+				"status": "draft",
 				"data": {
 					"title": "Home",
 					"content": [
@@ -1648,7 +1648,7 @@
 			{
 				"id": "pricing",
 				"slug": "pricing",
-				"status": "published",
+				"status": "draft",
 				"data": {
 					"title": "Pricing",
 					"content": [
@@ -1741,7 +1741,7 @@
 			{
 				"id": "contact",
 				"slug": "contact",
-				"status": "published",
+				"status": "draft",
 				"data": {
 					"title": "Contact",
 					"content": [

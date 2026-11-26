@@ -1,7 +1,7 @@
 export const notFound = {
 	label: "Error 404",
-	title: "This page doesn't {fit}",
-	lead: "Square peg, round hole. The page you're looking for may have moved, been renamed or never existed.",
+	title: "This page doesn't {exist}",
+	lead: "The page you're looking for may have moved, been renamed or never existed.",
 	body: "Check the address for typos, or use one of the links below to get back on track.",
 	primaryCta: { label: "Back to homepage", href: "/" },
 	secondaryCta: { label: "Contact us", href: "/contact" },
@@ -11,18 +11,18 @@ export const notFound = {
 	links: [
 		{
 			text: "Our services",
-			description: "Strategy, branding, websites, content and more.",
+			description: "Branding, web design, development, SEO and marketing.",
 			href: "/services",
 		},
 		{
-			text: "About us",
-			description: "The agency, the team and how we work.",
-			href: "/about",
+			text: "About MetaPixels",
+			description: "The agency, the team and our mission.",
+			href: "/all-about-metapixels",
 		},
 		{
-			text: "The blog",
-			description: "Practical insights for the sectors we serve.",
-			href: "/blog",
+			text: "Our work",
+			description: "Case studies across branding, websites and marketing.",
+			href: "/work",
 		},
 		{
 			text: "Contact us",

@@ -39,21 +39,36 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 			return json(400, { ok: false, error: turnstile.error });
 		}
 
+		const kind = asString(form.get("form_kind"));
+		const website = asString(form.get("website"));
+		const message = asString(form.get("message"));
 		const payload: ContactPayload = {
 			name: asString(form.get("name")),
 			email: asString(form.get("email")),
 			organisation: asString(form.get("organisation")) || undefined,
 			phone: asString(form.get("phone")) || undefined,
-			service: asString(form.get("service")) || undefined,
-			message: asString(form.get("message")),
+			service:
+				asString(form.get("service")) ||
+				(kind === "audit" ? "Performance audit" : undefined),
+			website: website || undefined,
+			message:
+				message ||
+				(kind === "audit" ? "Performance audit request." : "—"),
 		};
 
 		const privacy = asString(form.get("privacy"));
 
-		if (!payload.name || !payload.email || !payload.message) {
+		if (!payload.name || !payload.email || !payload.phone) {
 			return json(400, {
 				ok: false,
 				error: "Please complete the required fields.",
+			});
+		}
+
+		if (kind === "audit" && !website) {
+			return json(400, {
+				ok: false,
+				error: "Please enter your website URL.",
 			});
 		}
 
@@ -106,7 +121,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
 		return json(200, {
 			ok: true,
-			message: "Thanks — your message is on its way. We’ll be in touch soon.",
+			message:
+				kind === "audit"
+					? "Thank you. Your request for a website audit has been sent. One of the team will get back to you within one working day."
+					: "Thank you for contacting us. One of the team will be in touch shortly.",
 		});
 	} catch (error) {
 		console.error("[contact]", error);

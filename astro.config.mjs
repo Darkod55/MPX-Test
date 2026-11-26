@@ -2,7 +2,7 @@ import node from "@astrojs/node";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import icon from "astro-iconset";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import { satteri } from "@astrojs/markdown-satteri";
 import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
@@ -21,9 +21,12 @@ export default defineConfig({
 	// Rebuild request URLs from X-Forwarded-* behind Nginx / Cloudflare
 	security: {
 		allowedDomains: [
-			{ hostname: "thesquarepeg.agency" },
-			{ hostname: "www.thesquarepeg.agency" },
+			{ hostname: "metapixels.co.uk" },
+			{ hostname: "www.metapixels.co.uk" },
 		],
+	},
+	redirects: {
+		"/about": "/all-about-metapixels",
 	},
 	markdown: {
 		processor: satteri({
@@ -91,22 +94,6 @@ export default defineConfig({
 			}),
 		}),
 	],
-	fonts: [
-		{
-			provider: fontProviders.google(),
-			name: "Inter",
-			cssVariable: "--font-body",
-			weights: [400, 500, 600, 700],
-			fallbacks: ["sans-serif"],
-		},
-		{
-			provider: fontProviders.google(),
-			name: "Instrument Serif",
-			cssVariable: "--font-display",
-			weights: [400],
-			styles: ["normal", "italic"],
-			fallbacks: ["serif"],
-		},
-	],
+	// Lexend is self-hosted in src/styles/global.css (weights 400 and 700).
 	devToolbar: { enabled: false },
 });

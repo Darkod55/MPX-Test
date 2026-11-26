@@ -17,7 +17,7 @@ function alertsEnabled(): boolean {
 function alertRecipient(): string {
 	return (
 		process.env.ANALYTICS_ALERT_EMAIL?.trim() ||
-		"darko@thesquarepeg.agency"
+		"info@metapixels.co.uk"
 	);
 }
 
@@ -41,7 +41,7 @@ export async function sendClickAlertEmail(
 	if (!to) return;
 
 	const label = LABELS[type];
-	const subject = `[The Square Peg Agency] Contact click: ${label}`;
+	const subject = `[MetaPixels] Contact click: ${label}`;
 	const lines = [
 		`Type: ${label}`,
 		`Value: ${context.value}`,

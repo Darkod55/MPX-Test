@@ -1,45 +1,42 @@
 /**
  * Services page content — passed as props into theme section components.
  */
-import regentStreet from "../assets/images/services/regent-street.webp";
+import brandCard from "../assets/mpx/mpx-brand-card.png";
 import { serviceIndex } from "../data/services";
 
 export const servicesMeta = {
-	title: "Marketing Services for Addiction, Mental Health & Wellness",
+	title: "Branding, Web Design, SEO & Marketing Services - MetaPixels",
 	description:
-		"Full-service marketing across strategy, brand, websites, content, SEO, paid, email and ongoing support from The Square Peg Agency.",
+		"We're a web agency with a range of digital services, from branding, design and web development, to SEO, social media and content marketing.",
 };
 
 export const servicesHero = {
 	variant: "page" as const,
 	background: "primary" as const,
-	label: "What we do",
-	title: "Our services",
-	highlight: "services",
-	subtitle:
-		"Full-service marketing solutions across branding, design, technology and strategy.",
-	image: regentStreet,
-	imageAlt:
-		"A red double-decker bus on a curved London street lined with stone buildings",
-	imagePosition: "60% 45%",
+	label: "Services",
+	title: "Our extensive range of digital services.",
+	highlight: "digital services.",
+	subtitle: "End-to-end digital solutions across technology, design and marketing.",
+	image: brandCard,
+	imageAlt: "MetaPixels brand card",
+	imagePosition: "center",
 	imageFilter: "none" as const,
 	divider: true,
 	dividerTo: "white" as const,
 };
 
 export const servicesOverview = {
-	title:
-		"There are many elements to marketing, but they {shouldn't work independently} of one another.",
+	title: "Our extensive range of {digital services.}",
 	intro:
-		"Each has a role to play, and their strength comes from being connected and working towards the same objectives.",
+		"End-to-end digital solutions across technology, design and marketing.",
 	services: [...serviceIndex],
 };
 
 export const servicesCta = {
-	title: "Not sure what you need?",
+	title: "We're here, ready to help you grow your business.",
 	paragraphs: [
-		"You don't need to arrive with a list of services or know exactly what your marketing needs.",
-		"Tell us where you are, what you're trying to achieve and what's getting in the way. We'll help you work out where to start and what will make the greatest difference.",
+		"If you are interested in learning more about our digital and design services, please contact us today.",
+		"We would be happy to discuss your needs and how we can help you achieve your goals.",
 	],
-	cta: { label: "Let's start a conversation", href: "/contact" },
+	cta: { label: "Get in touch", href: "/contact" },
 };

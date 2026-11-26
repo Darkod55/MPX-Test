@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { absoluteUrl, resolveSiteOrigin } from "../utils/seo";
 import { serviceIndex } from "../data/services";
+import { organization } from "../data/organization";
 
 export const prerender = false;
 
@@ -12,27 +13,31 @@ export const GET: APIRoute = async ({ site, url, request }) => {
 	});
 
 	const home = absoluteUrl("/", origin);
-	const about = absoluteUrl("/about", origin);
+	const about = absoluteUrl("/all-about-metapixels", origin);
 	const services = absoluteUrl("/services", origin);
+	const work = absoluteUrl("/work", origin);
 	const contact = absoluteUrl("/contact", origin);
+	const audit = absoluteUrl("/performance-audit", origin);
 	const sitemap = absoluteUrl("/sitemap.xml", origin);
 
 	const serviceLines = serviceIndex
-		.map((s) => `- [${s.title}](${services}#${s.id})`)
+		.map((item) => `- [${item.title}](${services}#${item.id})`)
 		.join("\n");
 
-	const body = `# The Square Peg Agency
+	const body = `# MetaPixels
 
-> Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.
+> We build brands, marketing campaigns and search-optimised websites that help grow your business.
 
-The Square Peg Agency is a UK marketing agency that specialises in strategy-led work for addiction, mental health, behavioural health and wellness organisations. We focus on understanding first, strategy second, and implementation third.
+MetaPixels is a UK digital agency for branding, web design, web development, SEO, social and content marketing. Offices in Maidstone, Kent and Skopje.
 
 ## Key pages
 
-- [Home](${home}): Agency overview and approach
-- [About](${about}): Team, values, and how we work
-- [Services](${services}): Full list of marketing services
-- [Contact](${contact}): Book a discovery call or website audit
+- [Home](${home}): Agency overview
+- [About](${about}): The team and how we work
+- [Services](${services}): Digital services
+- [Work](${work}): Client case studies
+- [Contact](${contact}): Enquiry form and offices
+- [Performance audit](${audit}): Free website performance audit
 - [Sitemap](${sitemap}): Machine-readable list of public URLs
 
 ## Services
@@ -41,7 +46,8 @@ ${serviceLines}
 
 ## Contact
 
-Email: hello@thesquarepeg.agency
+Email: ${organization.email}
+Phone: ${organization.phone}
 Website: ${home}
 `;
 

@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import ContactSection from "../components/sections/contact/ContactSection.astro";
+import showcase from "../assets/mpx/metapixels-webpages-mockups.png";
+
+const meta = {
+	title: "Free Website Performance Audit, by MetaPixels",
+	description:
+		"Is your site slow or struggling to rank in Google? In need of search engine optimisation? Get the answers with your free website performance audit.",
+};
+---
+
+<BaseLayout
+	title={meta.title}
+	description={meta.description}
+	canonicalPath="/performance-audit"
+	ogImage="/metapixels-social-card.jpg"
+	lcpImage={showcase}
+>
+	<Hero
+		variant="page"
+		background="primary"
+		label="Performance audit"
+		title="Get your free website performance audit for AI and SEO."
+		highlight="AI and SEO."
+		subtitle="Get a clear plan for your company's website."
+		image={showcase}
+		imageAlt="Mockups of websites designed by MetaPixels"
+		primaryCta={{ label: "Get my audit", href: "#web-perf-form" }}
+		divider
+		dividerTo="white"
+	/>
+
+	<section class="audit-copy">
+		<div class="container audit-copy__inner">
+			<h2>Slow websites kill conversion.</h2>
+			<p class="audit-copy__lead">Faster for visitors. Stronger in search. Clearer to AI.</p>
+			<p>
+				Slow sites lose customers, drop down in search rankings and reduce visibility in AI.
+				Our audit finds the bottlenecks and gives you a clear, prioritised plan to fix them.
+			</p>
+			<ul>
+				<li>
+					<strong>Convert more visitors.</strong> Faster pages convert more visitors into customers.
+				</li>
+				<li>
+					<strong>Rank higher in search (SEO).</strong> Faster load times support Google's Core Web Vitals and visibility.
+				</li>
+				<li>
+					<strong>Surface more in AI agents.</strong> Well-structured pages are more likely to appear in AI answers.
+				</li>
+			</ul>
+			<h3>A plan you can act on today.</h3>
+			<p>
+				We'll deliver a clear, structured report outlining our findings, complete with actionable recommendations ranked by priority, from critical fixes to helpful advisories.
+			</p>
+			<p>
+				Some issues may be quick wins that your team can easily resolve in-house. Others could be more technical and require specialist expertise. We are happy to support you with these, but you are free to use any provider you choose.
+			</p>
+			<ul>
+				<li><strong>Critical.</strong> Fix these first. They affect users or break things for search and AI.</li>
+				<li><strong>High.</strong> Don't overlook these. Most of the improvements are likely to be here.</li>
+				<li><strong>Advisory.</strong> These are valuable to address when time and resources permit.</li>
+			</ul>
+			<h2>When performance is costing you.</h2>
+			<p>We particularly recommend site performance audits if you're facing these challenges:</p>
+			<ul>
+				<li>Page load times are negatively impacting site conversion and online revenue.</li>
+				<li>Site performance is negatively impacting the customer experience.</li>
+				<li>Your website keeps falling over due to traffic.</li>
+				<li>You're struggling with high bounce rates.</li>
+			</ul>
+			<h3>What's behind these issues?</h3>
+			<ul>
+				<li>First view speed, clicks, and input responsiveness.</li>
+				<li>Heavy images, fonts, and third-party scripts.</li>
+				<li>Caching, compression, and CDN settings for stability.</li>
+				<li>User experience issues on key pages that drive conversion.</li>
+			</ul>
+			<h2>Our approach to site performance audits.</h2>
+			<p>
+				Our detailed site performance audits identify and prioritise opportunities to transform the speed and performance of your website. We'll produce a prioritised backlog of frontend, backend and server infrastructure changes.
+			</p>
+			<h2>Why MetaPixels?</h2>
+			<p>
+				We're WordPress and web development specialists, with many years' experience working with high-performing websites. We focus on prioritising quick, high-impact fixes to get you fast and meaningful results.
+			</p>
+			<p>
+				It's a free, no-obligation audit. We don't hard sell. If you need our help, please ask and we will gladly assist you.
+			</p>
+		</div>
+	</section>
+
+	<ContactSection mode="audit" id="web-perf-form" />
+</BaseLayout>
+
+<style>
+	.audit-copy {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: var(--color-white);
+		color: var(--color-text);
+	}
+
+	.audit-copy__inner {
+		display: grid;
+		gap: 1rem;
+		max-width: 760px;
+	}
+
+	.audit-copy h2,
+	.audit-copy h3 {
+		text-transform: none;
+		margin-top: 0.5rem;
+	}
+
+	.audit-copy__lead {
+		font-size: 1.25rem;
+	}
+
+	.audit-copy ul {
+		margin: 0;
+		padding-left: 1.1rem;
+		list-style: disc;
+	}
+
+	.audit-copy li + li {
+		margin-top: 0.4rem;
+	}
+</style>

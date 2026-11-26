@@ -1,35 +1,34 @@
 /**
- * Blog archive page content — hero, newsletter, SEO.
+ * Blog archive page content. The Meta Pixels site has no posts.
+ * The route stays so the blog feature still builds.
  */
-import phoneBoxRain from "../assets/images/blog/phone-box-rain.webp";
+import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
 
 export const blogMeta = {
-	title: "Marketing Insights Blog",
-	description:
-		"Practical thinking on strategy, branding, websites and marketing for organisations in addiction, mental health and wellness.",
+	title: "Blog - MetaPixels",
+	description: "MetaPixels does not publish a blog. Explore our services and work instead.",
 };
 
 export const blogHero = {
 	variant: "page" as const,
 	background: "primary" as const,
-	label: "Insights",
-	title: "The blog",
-	highlight: "blog",
+	label: "Blog",
+	title: "No articles yet",
+	highlight: "yet",
 	subtitle:
-		"Practical thinking on strategy, branding, websites and marketing for organisations in addiction, mental health and wellness.",
-	image: phoneBoxRain,
-	imageAlt:
-		"A red telephone box on a rainy Thames embankment, with Big Ben and Westminster Bridge behind",
-	imagePosition: "0% 50%",
+		"This site does not have blog posts. Have a look at our services, work, or get in touch.",
+	image: showcase,
+	imageAlt: "A showcase of MetaPixels client web pages",
+	imagePosition: "center",
 	divider: true,
 	dividerTo: "white" as const,
 	minHeight: "560px",
 };
 
 export const blogNewsletter = {
-	title: "Insights in your inbox",
-	body: "Get new articles and practical marketing advice for the addiction, mental health and wellness sectors, sent once a month. No spam, unsubscribe at any time.",
+	title: "Talk to the team instead",
+	body: "There is no newsletter on this site yet. Send a message and one of the team will be in touch.",
 	emailLabel: "Email address",
-	placeholder: "you@organisation.com",
-	submitLabel: "Subscribe",
+	placeholder: "you@company.com",
+	submitLabel: "Contact us",
 };

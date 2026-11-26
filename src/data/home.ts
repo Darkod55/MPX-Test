@@ -7,32 +7,41 @@ export type Belief = {
 	body: string[];
 };
 
-/** Homepage “What we stand for” belief cards — `{word}` = highlight. */
+/** Homepage “Why choose us” points. `{word}` = highlight. */
 export const beliefs: Belief[] = [
 	{
 		number: "01",
-		title: "We believe {strategy} comes before tactics",
-		lead: "Every marketing decision should have a purpose and every activity a role.",
+		title: "A friendly, {personal} service",
 		body: [
-			"Whether you're redesigning your website, investing in SEO or planning your next campaign, every activity should support a clear objective. Without a strategy, it's easy to spend time and money on marketing that looks busy but delivers very little.",
-			"The most effective marketing isn't created by doing more. It's created by making sure everything works together.",
+			"We'll always take the time to listen to your needs and answer your questions.",
 		],
 	},
 	{
 		number: "02",
-		title: "We {specialise} where others generalise",
+		title: "A dedicated {in-house} team",
 		body: [
-			"At The Square Peg Agency, we work exclusively with organisations in addiction, mental health, behavioural health and wellness sectors. This focus allows us to create stronger marketing strategies and build lasting relationships with the organisations we support.",
-			"We believe specialist knowledge leads to better decisions, stronger marketing and better outcomes for our clients. Every strategy we develop, every website we design, and every campaign we create reflects the audiences you serve, the challenges you face, and the goals you're working towards.",
+			"We are experienced professionals with a range of skills to grow your business.",
 		],
 	},
 	{
 		number: "03",
-		title: "We {choose} our clients carefully",
-		lead: "The organisations we work with support people through some of life's most challenging experiences. That's a responsibility we take seriously.",
+		title: "A wide range of {services}",
 		body: [
-			"We work with organisations whose values align with our own and whose work we genuinely believe in. We want the marketing campaigns we create to help the right organisations reach the people who need them most.",
-			"That also shapes the way we market. We won't rely on fear, false promises or manipulative messaging to attract attention. We believe trust is earned, and the marketing we create should reflect that.",
+			"Whether it's a budget-sensitive website refresh or a full marketing service, we've got you covered.",
+		],
+	},
+	{
+		number: "04",
+		title: "A {collaborative} approach",
+		body: [
+			"We work with you on the deliverables, from branding and design preferences to website functionality and marketing campaigns.",
+		],
+	},
+	{
+		number: "05",
+		title: "A pricing system {for you}",
+		body: [
+			"We offer a variety of pricing options to fit your budget, rather than a one-size-fits-all approach.",
 		],
 	},
 ];
@@ -40,41 +49,36 @@ export const beliefs: Belief[] = [
 export type HowWeHelpService = ServiceNavItem | string | { label: string; href?: string };
 
 export const howWeHelp = {
-	title: "How {we} help",
+	title: "Our digital {services}",
 	intro:
-		"Whether you're launching a new organisation, refreshing your brand or looking for ongoing marketing support, every service we provide is built on the same foundation:",
-	steps: [
-		"Understanding first",
-		"Strategy second",
-		"Implementation third",
-	],
+		"End-to-end digital solutions across technology, design and marketing.",
+	steps: ["Branding", "Websites", "Marketing"],
 	outro:
-		"Whether you need support with a single project or ongoing marketing, we'll help you choose the services that are right for your organisation, ensuring every marketing activity has a clear purpose and supports your wider strategy.",
+		"From a budget-sensitive website refresh to a full marketing service, the same team can take the work on.",
 	cta: { label: "Explore our services", href: "/services" },
 	servicesLabel: "Our services include",
 	services: [...serviceIndex] satisfies HowWeHelpService[],
 };
 
 export const moreThanAnAgency = {
-	title: "More than {an agency}",
-	lead: "The best partnerships are built on trust, honesty and open communication, and we work collaboratively with our clients, offering strategic guidance, practical support and honest advice at every stage.",
-	body: "When you work with us, we become part of your team, and you'll always know why we're recommending something, how it supports your wider strategy and what we believe success looks like.",
+	title: "What can we do {for you?}",
+	lead: "As strategic thinkers, creative designers and logical problem-solvers, we support a diverse range of valued clients from many industries.",
+	body: "Would your business benefit from better search engine ranking? Or perhaps you need support with your social media management? Are your content pillars working hard enough for you?",
 	image: {
-		alt: "A red telephone box on a rainy Thames embankment, with Big Ben and Westminster Bridge behind",
-		position: "0% 50%",
+		alt: "MetaPixels client website mockup JA Brooks",
+		position: "center",
 	},
 };
 
 export const homeCta = {
-	id: "lets-talk",
-	title: "Don't fit the mould? Good.",
-	tagline: "Neither do we.",
+	id: "get-in-touch",
+	title: "Get in touch to set up a video call or face-to-face meeting.",
+	tagline: "Arrange a meeting.",
 	paragraphs: [
-		"Whether you're launching a new service, strengthening your brand or looking for a trusted marketing partner, we're here to help you communicate with confidence, build trust and achieve your goals.",
-		"If you're looking for a marketing agency that values strategy over shortcuts, relationships over transactions and long-term success over quick wins, we'd love to help.",
+		"Arrange a meeting to discuss the details of your project. Together, we'll create the perfect strategy for your business.",
 	],
 	card: {
-		text: "If that sounds like your organisation, we'd love to {start the conversation.}",
-		cta: { label: "Let's talk", href: "/contact" },
+		text: "Tell us about the project and {we'll take it from there.}",
+		cta: { label: "Arrange a meeting", href: "/contact" },
 	},
 };

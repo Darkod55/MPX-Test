@@ -22,9 +22,7 @@ const {
 			{/* Native .container — avoids Astro scoped-CSS missing child-component roots */}
 			<div class="container audit-bar__inner">
 				<p class="audit-bar__text">
-					Is your website underperforming?
-					<br class="audit-bar__break" />
-					{" "}Not ranking on Google or showing up in AI search?
+					Is your website underperforming? Not ranking in Google or ChatGPT?
 				</p>
 				<a class="audit-bar__link" href={linkHref}>
 					{linkLabel}
@@ -83,9 +81,9 @@ const {
 	.audit-bar__text,
 	.audit-bar__link {
 		font-family: var(--font-heading);
-		font-weight: 600;
+		font-weight: 700;
 		line-height: 1.2;
-		color: var(--color-white);
+		color: var(--color-primary);
 	}
 
 	.audit-bar__text {
@@ -127,7 +125,7 @@ const {
 	}
 
 	.audit-bar__link:hover {
-		color: var(--color-white);
+		color: var(--color-primary);
 		text-decoration-thickness: 2px;
 		text-underline-offset: 0.12em;
 	}

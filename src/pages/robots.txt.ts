@@ -11,7 +11,7 @@ export const GET: APIRoute = async ({ site, url, request }) => {
 	});
 	const sitemapUrl = absoluteUrl("/sitemap.xml", origin);
 
-	const body = `# The Square Peg Agency
+	const body = `# MetaPixels
 User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=no

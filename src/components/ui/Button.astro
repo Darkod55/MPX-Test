@@ -115,15 +115,9 @@ const linkRel = href && newTab ? "noopener noreferrer" : undefined;
 
 	/* Outline variant: white shell + inset fill (clip-path eats real borders) */
 	.btn-wrap--outline {
-		--slant: 14px;
-		background: var(--color-white);
-		padding: 2px;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
+		background: transparent;
+		padding: 0;
+		border-radius: 9999px;
 	}
 
 	.btn-wrap--outline.btn-wrap--sm {
@@ -140,20 +134,14 @@ const linkRel = href && newTab ? "noopener noreferrer" : undefined;
 		min-width: 44px;
 		padding: 0 34px;
 		border: none;
-		border-radius: 0;
+		border-radius: 9999px;
 		font-family: var(--font-heading);
 		font-size: 1rem;
-		font-weight: 500;
+		font-weight: 700;
 		letter-spacing: 0.06em;
 		line-height: 1;
 		text-transform: uppercase;
 		text-decoration: none;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
 		transition:
 			background-color 0.15s ease,
 			color 0.15s ease,
@@ -205,13 +193,13 @@ const linkRel = href && newTab ? "noopener noreferrer" : undefined;
 
 	/* Variants */
 	.btn--primary {
-		background: var(--color-red);
-		color: var(--color-white);
+		background: var(--color-secondary);
+		color: var(--color-primary);
 	}
 
 	.btn--primary:hover {
-		background: var(--color-red-deep);
-		color: var(--color-white);
+		background: var(--color-secondary-deep);
+		color: var(--color-primary);
 	}
 
 	.btn--light {
@@ -239,11 +227,9 @@ const linkRel = href && newTab ? "noopener noreferrer" : undefined;
 	}
 
 	.btn--outline-light {
-		/* Fill matches the surface behind the white shell border */
-		background: var(--btn-surface, var(--color-navy));
+		background: transparent;
 		color: var(--color-white);
-		/* Slightly tighter slant so the white shell reads evenly */
-		--slant: 12px;
+		box-shadow: inset 0 0 0 2px var(--color-white);
 	}
 
 	.btn--sm.btn--outline-light {
@@ -263,7 +249,7 @@ const linkRel = href && newTab ? "noopener noreferrer" : undefined;
 		min-height: 44px;
 		padding: 4px 0;
 		border: none;
-		border-bottom: 2px solid var(--color-red);
+		border-bottom: 2px solid var(--color-secondary);
 		border-radius: 0;
 		background: none;
 		font-family: var(--font-heading);

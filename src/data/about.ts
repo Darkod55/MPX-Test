@@ -2,62 +2,62 @@ import type { SteppedLabelItem } from "../components/ui/SteppedLabels.astro";
 
 export const aboutIntro = {
 	statement:
-		"The Square Peg Agency is a specialist marketing agency working across {addiction, mental health and wellness.}",
+		"We're a passionate digital agency, dedicated to delivering {branding, web design, web development and marketing services.}",
 	disciplines: [
-		{ text: "Strategy", tone: "navy" },
-		{ text: "Branding", tone: "red" },
-		{ text: "Digital", tone: "royal" },
-		{ text: "Content", tone: "navy" },
-		{ text: "Creative", tone: "red" },
+		{ text: "Branding", tone: "navy" },
+		{ text: "Web design", tone: "red" },
+		{ text: "Development", tone: "royal" },
+		{ text: "SEO", tone: "navy" },
+		{ text: "Marketing", tone: "red" },
 	] satisfies SteppedLabelItem[],
-	lead: "We bring strategy, branding, digital, content and creative expertise together to help organisations strengthen their position, reach the right people and grow.",
+	lead: "We're a skilled team that helps businesses thrive. With diverse expertise, we handle projects of any size.",
 	body: [
-		"Our team combines deep sector understanding with expertise across the full marketing mix. From branding and websites to content, social media, PPC, video and ongoing marketing leadership, we build our marketing plans around what each client actually needs.",
-		"We believe the best marketing comes from understanding the organisation behind it. That means getting to know your business, your audience, your ambitions and the problems you are trying to solve, then creating a strategy that has a clear purpose and desired outcome.",
+		"Our aim is to build client relationships, understand your business, and tailor branding, websites, SEO and marketing campaigns to your needs.",
+		"MetaPixels is a UK-based digital agency for branding, websites, marketing and design.",
 	],
-	cta: { label: "See our services", href: "/services" },
+	cta: { label: "Check our work", href: "/work" },
 };
 
 export const aboutVisible = {
-	title: "Marketing should do more than make you {visible}",
-	lead: "In addiction, mental health and wellness, marketing has to do more than simply attract attention. It needs to build trust, communicate clearly and reflect the responsibility that comes with speaking to people at vulnerable or critical moments in their lives and the lives of their loved ones.",
+	title: "We're a bit {fussy} about how things are done",
+	lead: "Since the early days of Merv's career, he's always been obsessed with trying to find the best approach to everything he and the team offers.",
 	body: [
-		"Every decision has meaning. It should strengthen your position, help the right people find you and turn attention into action, while representing your organisation in a way that is credible and true to who you are.",
-		"We are not interested in creating content simply to fill a calendar or follow trends. We focus on the things that will strengthen your position, support growth and make a measurable difference.",
+		"This, coupled with his client-first attitude towards running a business, are MetaPixels' key selling points.",
+		"We work with results driven organisations where digital experience is business critical.",
 	],
 	cta: { label: "Contact us", href: "/contact" },
 	image: {
-		alt: "A red telephone box on a rainy Thames embankment, with Big Ben and Westminster Bridge behind",
-		position: "0% 55%",
+		alt: "MetaPixels core team, Merv, Dafi, Pene, Simona and Darko",
+		position: "center",
 	},
 };
 
 export const aboutCta = {
 	id: "work-with-us",
-	title: "We're not the right agency for everyone",
+	title: "Interested in engaging with us?",
 	titleSize: "md" as const,
-	tagline: "And we're good with that.",
+	tagline: "See what we can do for your business.",
 	paragraphs: [
-		"We work best with organisations in addiction, mental health and wellness that care about the quality of what they put into the world and want their marketing activity to reflect who they are and to play a meaningful role in their growth.",
-		"You know your organisation, your sector and your audience from the inside. We know how to turn that knowledge into stronger positioning, better marketing and meaningful growth on the outside. And that shared commitment matters because, in our experience, the magic happens when both sides are invested.",
+		"Whether it's assistance with your website, brand, socials, or better understanding your data, we're confident there'll be ways we can improve your business.",
+		"We're here, ready to help you grow your business.",
 	],
 	card: {
-		text: "If that sounds like the kind of marketing partnership you're looking for, {we'd love to work with you.}",
-		cta: { label: "Work with us", href: "/contact" },
+		text: "If you want to talk it through, {get in touch.}",
+		cta: { label: "Contact us", href: "/contact" },
 	},
 };
 
 export const whySpa = {
-	title: "Why work with {SPA?}",
+	title: "Why {choose} us?",
 	intro:
-		"We know that choosing an agency means trusting people with your brand, your reputation and a significant part of your marketing investment, and we take that seriously.",
-	listIntro: "When you work with us you get:",
+		"Choosing the right web design agency can be a daunting process. Every business will benefit from a great brand, an amazing website, solid content pillars and effective marketing.",
+	listIntro: "We've worked hard to cover these bases:",
 	reasons: [
-		"Specialist experience in addiction, mental health and wellness.",
-		"Strategy-led, full-service branding and marketing.",
-		"Senior expertise across creative, digital and technology.",
-		"Straightforward communication and transparent ways of working.",
-		"Marketing built around your organisation; not an agency formula.",
+		"Friendly, personal service.",
+		"Dedicated in-house team.",
+		"Prices to suit your budget.",
+		"A wide range of services.",
+		"You have complete control.",
 	],
-	cta: { label: "Want to learn more?", href: "/contact" },
+	cta: { label: "Work with us", href: "/contact" },
 };

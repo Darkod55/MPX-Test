@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import { homeRecentWork } from "../../../content/home";
+---
+
+<section class="recent-work" id="recent-work">
+	<div class="container recent-work__inner">
+		<h2>Recent work.</h2>
+		<ul>
+			{
+				homeRecentWork.map((item) => (
+					<li>
+						<a href={item.href}>
+							<Image
+								src={item.image}
+								alt={item.imageAlt}
+								width={640}
+								height={400}
+								widths={[320, 480, 640]}
+								sizes="(min-width: 900px) 30vw, 100vw"
+								loading="lazy"
+							/>
+							<h3>{item.title}</h3>
+							<p>{item.summary}</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.recent-work {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	.recent-work h2,
+	.recent-work h3 {
+		color: var(--color-white);
+		text-transform: none;
+	}
+
+	.recent-work ul {
+		display: grid;
+		gap: 1.5rem;
+		margin: 1.5rem 0 0;
+	}
+
+	@media (min-width: 800px) {
+		.recent-work ul {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.recent-work a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.recent-work img {
+		width: 100%;
+		height: auto;
+		border-radius: 1rem;
+	}
+
+	.recent-work p {
+		color: var(--color-text-on-dark);
+	}
+</style>

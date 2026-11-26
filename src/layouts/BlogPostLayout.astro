@@ -63,7 +63,9 @@ const origin = resolveSiteOrigin({
 const pageUrl = absoluteUrl(path, origin);
 const shareImageUrl = absoluteUrl(DEFAULT_OG_IMAGE, origin);
 const authorName = member?.name ?? author;
-const authorPath = member ? `/about#${member.slug}` : "/about#team";
+const authorPath = member
+	? `/all-about-metapixels#${member.slug}`
+	: "/all-about-metapixels#team";
 const authorUrl = absoluteUrl(authorPath, origin);
 
 const articleJsonLd = {
@@ -75,7 +77,7 @@ const articleJsonLd = {
 	dateModified: (updatedDate ?? publishDate).toISOString(),
 	author: {
 		"@type": "Person",
-		"@id": `${origin}/about#${member?.slug ?? author}`,
+		"@id": `${origin}/all-about-metapixels#${member?.slug ?? author}`,
 		name: authorName,
 		url: authorUrl,
 		...(member?.role ? { jobTitle: member.role } : {}),

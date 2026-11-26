@@ -83,7 +83,7 @@ const canonical = absoluteUrl(path, origin);
 const shareImage = absoluteUrl(ogImage, origin);
 const metaDescription =
 	description ||
-	"Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.";
+	"We build brands, marketing campaigns and search-optimised websites that help grow your business.";
 
 const extraNodes: Record<string, unknown>[] = [
 	webPageJsonLd({
@@ -103,7 +103,7 @@ if (jsonLd) {
 
 const graph = buildSiteGraph(origin, extraNodes);
 
-const faviconUrl = settings?.favicon?.url ?? "/logo.svg";
+const faviconUrl = settings?.favicon?.url ?? "/favicon.svg";
 const faviconType =
 	settings?.favicon?.contentType ??
 	(faviconUrl.endsWith(".svg") ? "image/svg+xml" : undefined);
@@ -116,10 +116,6 @@ const faviconType =
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{fullTitle}</title>
 		<meta name="description" content={metaDescription} />
-		<meta
-			name="google-site-verification"
-			content="Az_EEhI_fuZJ-68fLB1F0XAE30YIa01cXWgAtsRVJHc"
-		/>
 		{robots && <meta name="robots" content={robots} />}
 		<link rel="canonical" href={canonical} />
 
@@ -137,7 +133,7 @@ const faviconType =
 		}
 
 		<meta property="og:type" content={ogType} />
-		<meta property="og:site_name" content="The Square Peg Agency" />
+		<meta property="og:site_name" content="MetaPixels" />
 		<meta property="og:locale" content="en_GB" />
 		<meta property="og:title" content={fullTitle} />
 		<meta property="og:description" content={metaDescription} />

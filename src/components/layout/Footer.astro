@@ -3,12 +3,12 @@ import LinkedIn from "../ui/icons/LinkedIn.astro";
 import X from "../ui/icons/X.astro";
 import Instagram from "../ui/icons/Instagram.astro";
 import Facebook from "../ui/icons/Facebook.astro";
-import logoWhite from "../../assets/logo/tspa-white.svg?url";
+import logoLight from "../../assets/logo/logo-mpx-light.svg?url";
 import { isActive } from "../../utils/isActive";
 import { footerNav, legalLinks, socialLinks } from "../../data/navigation";
+import { organization } from "../../data/organization";
 
 const pathname = Astro.url.pathname;
-const year = new Date().getFullYear();
 
 const iconMap = {
 	linkedin: LinkedIn,
@@ -20,13 +20,13 @@ const iconMap = {
 
 <footer class="site-footer">
 	<div class="container site-footer__main">
-		<a class="site-footer__logo" href="/" aria-label="The Square Peg Agency – home">
+		<a class="site-footer__logo" href="/" aria-label={`${organization.name} – home`}>
 			<img
-				src={logoWhite}
-				alt="The Square Peg Agency"
+				src={logoLight}
+				alt={organization.name}
 				class="site-footer__logo-img"
-				width="232"
-				height="60"
+				width="254"
+				height="25"
 				decoding="async"
 			/>
 		</a>
@@ -64,7 +64,7 @@ const iconMap = {
 									href={item.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label={`The Square Peg Agency on ${item.label}`}
+									aria-label={`${organization.name} on ${item.label}`}
 								>
 									<Icon size={18} />
 								</a>
@@ -79,7 +79,10 @@ const iconMap = {
 	<div class="site-footer__bottom">
 		<div class="container site-footer__bottom-inner">
 			<p class="site-footer__copy">
-				© {year} The Square Peg Agency. All rights reserved.
+				Copyright {organization.legalName}. 2025. All rights reserved.
+			</p>
+			<p class="site-footer__offices">
+				UK Offices, Maidstone, Kent, UK · European Offices, Skopje, NMK
 			</p>
 			<ul class="site-footer__legal">
 				{
@@ -147,14 +150,20 @@ const iconMap = {
 
 	.site-footer__logo-img {
 		display: block;
-		height: 60px;
-		width: auto;
+		height: auto;
+		width: 220px;
 	}
 
 	@media (max-width: 639px) {
 		.site-footer__logo-img {
-			height: 48px;
+			width: 168px;
 		}
+	}
+
+	.site-footer__offices {
+		margin: 8px 0 0;
+		font-size: 0.875rem;
+		color: var(--color-text-muted-dark);
 	}
 
 	.site-footer__nav-list {
@@ -212,27 +221,21 @@ const iconMap = {
 	}
 
 	.site-footer__social-link {
-		--slant: 8px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 52px;
+		width: 44px;
 		height: 44px;
-		background: var(--color-royal);
-		color: var(--color-white);
+		background: var(--color-secondary);
+		color: var(--color-primary);
 		text-decoration: none;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
+		border-radius: 9999px;
 		transition: background-color 0.15s ease;
 	}
 
 	.site-footer__social-link:hover {
-		background: var(--color-red);
-		color: var(--color-white);
+		background: var(--color-secondary-deep);
+		color: var(--color-primary);
 	}
 
 	.site-footer__social-link:focus,

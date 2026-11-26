@@ -1,7 +1,8 @@
 ---
 import Button from "../ui/Button.astro";
-import logoColor from "../../assets/logo/tspa-color.svg?url";
+import logoLight from "../../assets/logo/logo-mpx-light.svg?url";
 import { headerCta, mainNav } from "../../data/navigation";
+import { organization } from "../../data/organization";
 import { isActive } from "../../utils/isActive";
 
 const pathname = Astro.url.pathname;
@@ -11,14 +12,14 @@ const panelId = "site-header-panel";
 <header class="site-header">
 	{/* Native .container — scoped CSS does not land on child-component roots */}
 	<div class="container site-header__bar">
-		<a class="site-header__logo" href="/" aria-label="The Square Peg Agency – home">
+		<a class="site-header__logo" href="/" aria-label={`${organization.name} – home`}>
 			{/* Plain SVG <img> — Astro Image was rasterising/cropping the wordmark */}
 			<img
-				src={logoColor}
-				alt="The Square Peg Agency"
+				src={logoLight}
+				alt={organization.name}
 				class="site-header__logo-img"
-				width="232"
-				height="60"
+				width="254"
+				height="25"
 				decoding="async"
 				fetchpriority="low"
 			/>
@@ -250,7 +251,8 @@ const panelId = "site-header-panel";
 
 <style>
 	.site-header {
-		background: var(--color-white);
+		background: var(--color-primary);
+		color: var(--color-white);
 		position: relative;
 		z-index: 40;
 	}
@@ -276,14 +278,14 @@ const panelId = "site-header-panel";
 
 	.site-header__logo-img {
 		display: block;
-		height: 60px;
-		width: auto;
-		transition: height 0.45s ease;
+		height: auto;
+		width: 220px;
+		transition: width 0.45s ease;
 	}
 
 	@media (max-width: 639px) {
 		.site-header__logo-img {
-			height: 48px;
+			width: 168px;
 		}
 	}
 
@@ -293,12 +295,12 @@ const panelId = "site-header-panel";
 	}
 
 	:global(.site-chrome.is-scrolled) .site-header__logo-img {
-		height: 42px;
+		width: 180px;
 	}
 
 	@media (max-width: 639px) {
 		:global(.site-chrome.is-scrolled) .site-header__logo-img {
-			height: 36px;
+			width: 148px;
 		}
 	}
 
@@ -349,7 +351,7 @@ const panelId = "site-header-panel";
 		font-size: 1rem; /* 16px */
 		font-weight: 600;
 		line-height: 1.4;
-		color: var(--color-navy);
+		color: var(--color-white);
 		text-decoration: none;
 		transition: color 0.15s ease;
 	}
@@ -375,17 +377,11 @@ const panelId = "site-header-panel";
 		width: 52px;
 		height: 44px;
 		padding: 0;
-		background: var(--color-navy);
-		color: var(--color-white);
+		background: var(--color-secondary);
+		color: var(--color-primary);
 		border: none;
-		border-radius: 0;
+		border-radius: 9999px;
 		cursor: pointer;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
 	}
 
 	.site-header__toggle:focus,
@@ -406,7 +402,7 @@ const panelId = "site-header-panel";
 		display: block;
 		width: 100%;
 		height: 2px;
-		background: var(--color-white);
+		background: var(--color-primary);
 		border-radius: 0;
 		transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
 	}

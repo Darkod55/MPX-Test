@@ -6,6 +6,8 @@ import BetterUnderstanding from "../components/sections/home/BetterUnderstanding
 import Beliefs from "../components/sections/home/Beliefs.astro";
 import HowWeHelp from "../components/sections/home/HowWeHelp.astro";
 import MoreThanAnAgency from "../components/sections/home/MoreThanAnAgency.astro";
+import RecentWork from "../components/sections/home/RecentWork.astro";
+import ClientLogos from "../components/sections/home/ClientLogos.astro";
 import CtaSection from "../components/sections/CtaSection.astro";
 import {
 	homeBeliefs,
@@ -32,5 +34,7 @@ import {
 	<Beliefs {...homeBeliefs} beforeSplit />
 	<HowWeHelp {...homeHowWeHelp} />
 	<MoreThanAnAgency {...homeMoreThanAnAgency} />
+	<RecentWork />
+	<ClientLogos />
 	<CtaSection {...homeCtaSection} />
 </BaseLayout>

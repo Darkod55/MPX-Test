@@ -25,12 +25,12 @@ export type BreadcrumbItem = {
 
 const BRAND = organization.name;
 
-/** Default Open Graph / Twitter share image (public/share.webp). */
-export const DEFAULT_OG_IMAGE = "/share.webp";
+/** Default Open Graph / Twitter share image. */
+export const DEFAULT_OG_IMAGE = "/metapixels-social-card.jpg";
 export const DEFAULT_OG_IMAGE_ALT =
-	"The Square Peg Agency — Why fit in when you can stand out?";
-export const DEFAULT_OG_IMAGE_WIDTH = 1200;
-export const DEFAULT_OG_IMAGE_HEIGHT = 630;
+	"MetaPixels brand logo with a background displaying mockups of websites.";
+export const DEFAULT_OG_IMAGE_WIDTH = 2400;
+export const DEFAULT_OG_IMAGE_HEIGHT = 1260;
 
 /** Site launch / first publish date for marketing pages without their own chronology. */
 export const SITE_LAUNCH_DATE = "2026-11-07";
@@ -120,7 +120,7 @@ export function resolveSiteOrigin(opts: {
 export function documentTitle(pageTitle: string, brand = BRAND): string {
 	const trimmed = pageTitle.trim();
 	if (!trimmed) return brand;
-	if (trimmed.toLowerCase().includes("square peg")) return trimmed;
+	if (trimmed.toLowerCase().includes("metapixels")) return trimmed;
 	return `${trimmed} — ${brand}`;
 }
 
@@ -137,37 +137,43 @@ export function organizationJsonLd(origin: string) {
 		name: organization.name,
 		legalName: organization.legalName,
 		url: origin,
-		logo: absoluteUrl("/logo.svg", origin),
+		logo: absoluteUrl("/logo-icon.png", origin),
 		email: organization.email,
+		telephone: organization.phone,
 		description:
-			"Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.",
+			"We build brands, marketing campaigns and search-optimised websites that help grow your business.",
 		areaServed: "GB",
 		address: {
 			"@type": "PostalAddress",
 			...organization.address,
 		},
-		identifier: {
-			"@type": "PropertyValue",
-			name: "Company Number",
-			value: organization.companyNumber,
-			propertyID: "Companies House",
-		},
+		...(organization.companyNumber
+			? {
+					identifier: {
+						"@type": "PropertyValue",
+						name: "Company Number",
+						value: organization.companyNumber,
+						propertyID: "Companies House",
+					},
+				}
+			: {}),
 		sameAs: [...organization.sameAs],
 		contactPoint: {
 			"@type": "ContactPoint",
-			contactType: "sales",
+			contactType: "customer support",
 			email: organization.email,
+			telephone: organization.phone,
 			areaServed: "GB",
 			availableLanguage: ["English"],
 		},
 		knowsAbout: [
-			"Addiction sector marketing",
-			"Mental health marketing",
-			"Behavioural health marketing",
-			"Wellness marketing",
-			"Brand strategy",
-			"Website design",
+			"Branding",
+			"Web design",
+			"Web development",
+			"Search engine optimisation",
 			"Content marketing",
+			"Social media marketing",
+			"Paid search advertising",
 		],
 	};
 }

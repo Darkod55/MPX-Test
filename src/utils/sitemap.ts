@@ -12,13 +12,12 @@ export type SitemapEntry = {
 /** Core marketing + legal routes that should appear in the sitemap. */
 export const STATIC_SITEMAP_PATHS = [
 	"/",
-	"/about",
+	"/all-about-metapixels",
 	"/services",
+	"/work",
 	"/contact",
-	"/blog",
+	"/performance-audit",
 	"/privacy-policy",
-	"/cookie-policy",
-	"/terms-and-conditions",
 ] as const;
 
 function toLastmod(value: string | Date | undefined | null): string {

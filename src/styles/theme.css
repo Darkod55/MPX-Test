@@ -8,25 +8,24 @@
 */
 
 :root {
-	/* Brand — from The Square Peg Agency logo */
-	--color-brand: #012169;
-	--color-brand-strong: color-mix(in srgb, #012169 88%, #000);
-	--color-on-brand: #ffffff;
-	--color-accent: #c8102e;
-	--color-accent-soft: color-mix(in srgb, #c8102e 18%, transparent);
+	/* Brand — Meta Pixels */
+	--color-brand: #ff884b;
+	--color-brand-strong: #cc6d3c;
+	--color-on-brand: #101920;
+	--color-accent: #ee653d;
+	--color-accent-soft: color-mix(in srgb, #ee653d 18%, transparent);
 
-	/* Flat canvas to start — remove Halden warm glows */
 	--color-bg: #ffffff;
 	--color-surface: #ffffff;
-	--color-sunken: #f4f5f7;
-	--color-text: #012169;
-	--color-text-secondary: color-mix(in srgb, #012169 72%, #64748b);
-	--color-muted: #64748b;
-	--color-border: rgb(1 33 105 / 0.1);
-	--color-border-strong: rgb(1 33 105 / 0.2);
-	--color-night: #012169;
+	--color-sunken: #f4f4f4;
+	--color-text: #212529;
+	--color-text-secondary: #212529;
+	--color-muted: #212529;
+	--color-border: rgb(16 25 32 / 0.1);
+	--color-border-strong: rgb(16 25 32 / 0.2);
+	--color-night: #101920;
 	--color-on-night: #ffffff;
-	--color-on-night-muted: rgb(255 255 255 / 0.7);
+	--color-on-night-muted: rgb(255 255 255 / 0.72);
 	--glow-daylight: none;
 	--glow-dusk: none;
 

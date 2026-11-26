@@ -7,23 +7,31 @@ import Instagram from "../../ui/icons/Instagram.astro";
 import Facebook from "../../ui/icons/Facebook.astro";
 import X from "../../ui/icons/X.astro";
 import {
+	auditForm,
 	contactForm as defaultForm,
 	contactPanel as defaultPanel,
 } from "../../../data/contact";
 import { socialLinks } from "../../../data/navigation";
+import { organization } from "../../../data/organization";
 import { highlightBraces } from "../../../utils/highlight";
-import logoColor from "../../../assets/logo/tspa-color.svg?url";
+import logoMark from "../../../assets/mpx/MPX-Brand-Icon.svg?url";
 import { getTurnstileSiteKey } from "../../../utils/turnstile";
 
 interface Props {
 	id?: string;
 	class?: string;
+	mode?: "contact" | "audit";
 }
 
-const { id: sectionId = "contact", class: className = "" } = Astro.props;
+const {
+	id,
+	class: className = "",
+	mode = "contact",
+} = Astro.props;
 
 const panel = defaultPanel;
-const form = defaultForm;
+const form = mode === "audit" ? auditForm : defaultForm;
+const sectionId = id ?? (mode === "audit" ? "web-perf-form" : "contact");
 const panelTitleHtml = highlightBraces(panel.title);
 const formTitleHtml = highlightBraces(form.title);
 const turnstileSiteKey = getTurnstileSiteKey();
@@ -104,7 +112,7 @@ const socialIconMap = {
 											href={item.href}
 											target="_blank"
 											rel="noopener noreferrer"
-											aria-label={`The Square Peg Agency on ${item.label}`}
+											aria-label={`${organization.name} on ${item.label}`}
 										>
 											<SocialIcon size={18} />
 										</a>
@@ -140,15 +148,15 @@ const socialIconMap = {
 			>
 				<img
 					class="contact-form__thanks-logo"
-					src={logoColor}
-					alt="The Square Peg Agency"
-					width="180"
-					height="47"
+					src={logoMark}
+					alt={organization.name}
+					width="72"
+					height="72"
 					decoding="async"
 				/>
 				<h3 class="contact-form__thanks-title">Thank you</h3>
 				<p class="contact-form__thanks-copy" data-contact-thanks-copy>
-					Thanks — your message is on its way. We’ll be in touch soon.
+					{form.successBody}
 				</p>
 			</div>
 
@@ -159,6 +167,7 @@ const socialIconMap = {
 				data-contact-form
 			>
 				{/* Attribution — filled by site-analytics.ts */}
+				<input type="hidden" name="form_kind" value={mode} />
 				<input type="hidden" name="referrer_visitor_id" value="" />
 				<input type="hidden" name="referrer_source" value="" />
 				<input type="hidden" name="referrer_medium" value="" />
@@ -198,19 +207,6 @@ const socialIconMap = {
 					</div>
 
 					<div class="form-field">
-						<label class="form-field__label" for="contact-organisation">
-							Organisation
-						</label>
-						<input
-							id="contact-organisation"
-							name="organisation"
-							type="text"
-							autocomplete="organization"
-							placeholder="Your organisation"
-						/>
-					</div>
-
-					<div class="form-field">
 						<label class="form-field__label" for="contact-email">
 							Email address <span class="form-field__required" aria-hidden="true">*</span>
 						</label>
@@ -226,7 +222,7 @@ const socialIconMap = {
 
 					<div class="form-field">
 						<label class="form-field__label" for="contact-phone">
-							Phone number
+							Phone number <span class="form-field__required" aria-hidden="true">*</span>
 						</label>
 						<input
 							id="contact-phone"
@@ -234,31 +230,44 @@ const socialIconMap = {
 							type="tel"
 							autocomplete="tel"
 							placeholder="Your phone number"
+							required
 						/>
 					</div>
 
-					<div class="form-field contact-form__full">
-						<label class="form-field__label" for="contact-service">
-							What can we help with?
-						</label>
-						<select id="contact-service" name="service">
-							<option value="">Select a service</option>
-							{form.services.map((service) => (
-								<option value={service}>{service}</option>
-							))}
-						</select>
-					</div>
+					{
+						mode === "audit" && (
+							<div class="form-field contact-form__full">
+								<label class="form-field__label" for="contact-website">
+									Company website URL{" "}
+									<span class="form-field__required" aria-hidden="true">*</span>
+								</label>
+								<input
+									id="contact-website"
+									name="website"
+									type="url"
+									inputmode="url"
+									placeholder="https://example.com"
+									required
+								/>
+							</div>
+						)
+					}
 
 					<div class="form-field contact-form__full">
 						<label class="form-field__label" for="contact-message">
-							Your message <span class="form-field__required" aria-hidden="true">*</span>
+							{form.messageLabel}
+							{
+								form.messageRequired && (
+									<span class="form-field__required" aria-hidden="true">*</span>
+								)
+							}
 						</label>
 						<textarea
 							id="contact-message"
 							name="message"
 							rows="6"
-							placeholder="Share a little context, timelines, or what success looks like for you."
-							required
+							placeholder="Share a little context."
+							required={form.messageRequired}
 						/>
 					</div>
 				</div>
@@ -266,7 +275,7 @@ const socialIconMap = {
 				<label class="form-checkbox contact-form__consent">
 					<input type="checkbox" name="privacy" value="1" required />
 					<span>
-						I agree to The Square Peg Agency storing my details so they can
+						I agree to {organization.name} storing my details so they can
 						respond to my enquiry. See our{" "}
 						<a href={form.privacyHref}>privacy policy</a>.
 					</span>
@@ -632,27 +641,21 @@ const socialIconMap = {
 	}
 
 	.contact-aside__social-link {
-		--slant: 8px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 52px;
+		width: 44px;
 		height: 44px;
-		background: var(--color-red);
-		color: var(--color-white);
+		background: var(--color-secondary);
+		color: var(--color-primary);
 		text-decoration: none;
-		clip-path: polygon(
-			var(--slant) 0,
-			100% 0,
-			calc(100% - var(--slant)) 100%,
-			0 100%
-		);
+		border-radius: 9999px;
 		transition: background-color 0.15s ease;
 	}
 
 	.contact-aside__social-link:hover {
-		background: var(--color-royal);
-		color: var(--color-white);
+		background: var(--color-secondary-deep);
+		color: var(--color-primary);
 	}
 
 	.contact-aside__social-link:focus,

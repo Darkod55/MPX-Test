@@ -4,6 +4,7 @@ export type ContactPayload = {
 	organisation?: string;
 	phone?: string;
 	service?: string;
+	website?: string;
 	message: string;
 };
 
@@ -34,7 +35,7 @@ function normalizeApiKey(raw: string): string {
 }
 
 function parseBccList(raw: string | undefined): ZeptoRecipient[] {
-	const fallback = "darko@thesquarepeg.agency";
+	const fallback = "info@metapixels.co.uk";
 	const source = raw?.trim() ? raw : fallback;
 	const seen = new Set<string>();
 	const out: ZeptoRecipient[] = [];
@@ -57,9 +58,9 @@ export function getZeptoConfig(): ZeptoConfig {
 			"https://api.zeptomail.com/v1.1/email",
 		apiKey: normalizeApiKey(requireEnv("ZEPTOMAIL_API_KEY")),
 		fromAddress: requireEnv("ZEPTOMAIL_FROM_ADDRESS"),
-		fromName: process.env.ZEPTOMAIL_FROM_NAME?.trim() || "The Square Peg Agency",
+		fromName: process.env.ZEPTOMAIL_FROM_NAME?.trim() || "MetaPixels",
 		toAddress: requireEnv("CONTACT_TO_ADDRESS"),
-		toName: process.env.CONTACT_TO_NAME?.trim() || "The Square Peg Agency",
+		toName: process.env.CONTACT_TO_NAME?.trim() || "MetaPixels",
 		bcc: parseBccList(process.env.CONTACT_BCC_ADDRESS),
 	};
 }
@@ -80,6 +81,7 @@ function buildBodies(payload: ContactPayload): { text: string; html: string } {
 		["Organisation", payload.organisation || "—"],
 		["Phone", payload.phone || "—"],
 		["Service", payload.service || "—"],
+		["Website", payload.website || "—"],
 		["Message", payload.message],
 	];
 

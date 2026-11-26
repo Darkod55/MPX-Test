@@ -1,46 +1,47 @@
 /**
  * Home page content — passed as props into theme section components.
- * Edit copy/surfaces here; the page file only composes the sections.
  */
-import towerHero from "../assets/images/hero/tower-hero.webp";
-import towerBridgeFlag from "../assets/images/home/tower-bridge-flag.webp";
+import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
+import mockups from "../assets/mpx/metapixels-webpages-mockups.png";
+import jaBrooks from "../assets/mpx/metapixels-client-website-mockup-ja-brooks-1.png";
+import homeStatements from "../assets/mpx/metapixels-client-website-mockup-home-statements.png";
+import cyberone from "../assets/mpx/metapixels-client-website-mockup-cyberone.png";
 import {
 	beliefs,
 	homeCta,
 	howWeHelp,
 	moreThanAnAgency,
 } from "../data/home";
-import phoneBoxRain from "../assets/images/home/phone-box-rain.webp";
 
 export const homeMeta = {
-	title:
-		"Strategic Marketing for Addiction, Mental Health & Wellness | The Square Peg Agency",
+	title: "The Marketing Agency for Growth - MetaPixels",
 	description:
-		"The Square Peg Agency provides strategy-led marketing for addiction, mental health, behavioural health and wellness organisations.",
+		"We build brands, marketing campaigns and search-optimised websites that help grow your business. Get your free website performance audit.",
 	canonicalPath: "/",
-	ogImage: towerHero.src,
-	ogImageAlt: "Tower of London on the Thames",
+	ogImage: "/metapixels-social-card.jpg",
+	ogImageAlt:
+		"MetaPixels brand logo with a background displaying mockups of websites.",
 };
 
 export const homeHero = {
 	id: "hero",
 	variant: "home" as const,
 	background: "primary" as const,
-	label: "Different by Design",
-	title: "Why fit in when you can stand out?",
-	highlight: "stand out?",
+	label: "MetaPixels",
+	title: "The marketing agency for growth.",
+	highlight: "growth.",
 	subtitle:
-		"Strategic marketing for organisations in the addiction, mental health, behavioural health and wellness sectors.",
-	image: towerHero,
-	imageAlt: "Tower of London on the Thames",
-	imagePosition: "55% 42%",
+		"We build brands, marketing campaigns and search-optimised websites, that help grow your business.",
+	image: showcase,
+	imageAlt: "A showcase of MetaPixels client web pages",
+	imagePosition: "center",
 	imageFilter: "none" as const,
 	primaryCta: {
-		label: "Book a discovery call",
+		label: "Get started",
 		href: "/contact",
 	},
 	secondaryCta: {
-		label: "How we help",
+		label: "Our services",
 		href: "/services",
 	},
 	divider: true,
@@ -49,57 +50,54 @@ export const homeHero = {
 
 export const homeIntro = {
 	id: "intro",
-	statement:
-		"You don't need another marketing agency. You need one that understands the sectors you work in and the people you serve.",
-	highlight: "understands the sectors you work in",
-	body: "Choosing the right marketing agency isn't just about websites, content or social media. It's about finding a team that can communicate your expertise, strengthen your reputation and help your organisation grow in a way that reflects your values.",
-	emphasis:
-		"At The Square Peg Agency, that's exactly what we help organisations achieve.",
-	showGraphic: true,
+	statement: "Need help growing your business?",
+	highlight: "growing your business",
+	body: "Our team will create a custom plan that's tailored to your specific needs, budget and goals. We'll help you with everything from branding, website design and SEO to social media advertising and content marketing.",
+	emphasis: "We know that choosing the right digital marketing agency can be a daunting process. That's where we come in.",
+	showGraphic: false,
 	graphicScheme: "navy" as const,
-	animate: true,
+	animate: false,
 };
 
 export const homeBetterUnderstanding = {
-	id: "better-understanding",
+	id: "growing",
 	background: "tertiary" as const,
 	textColor: "white" as const,
 	divider: "slant-top" as const,
 	imageSide: "right" as const,
 	showSlash: true,
-	title: "Better understanding creates better marketing",
-	lead: "In sectors where credibility, ethics and reputation matter, effective marketing is about more than visibility. It's about building trust, demonstrating expertise and helping the right people find you.",
+	title: "What can we do for you?",
+	lead: "As strategic thinkers, creative designers and logical problem-solvers, we support a diverse range of valued clients from many industries.",
 	cta: {
-		label: "Book a discovery call",
+		label: "Get a free consultation",
 		href: "/contact",
 	},
-	image: towerBridgeFlag,
-	imageAlt:
-		"Tower Bridge in monochrome with a colour Union Jack flying from the walkway",
-	imagePosition: "45% 40%",
+	image: mockups,
+	imageAlt: "Mockups of websites designed by MetaPixels",
+	imagePosition: "center",
 	imageCorners: "tl-br" as const,
 	imageFilter: "none" as const,
 };
 
 export const homeBeliefs = {
-	id: "what-we-stand-for",
-	title: "What we {stand for}",
+	id: "why-choose-us",
+	title: "Why {choose} us?",
 	intro:
-		"Three beliefs shape every strategy, website and campaign we create.",
+		"We know that choosing the right digital marketing agency can be a daunting process. That's where we come in.",
 	items: beliefs,
 };
 
 export const homeHowWeHelp = {
-	id: "how-we-help",
+	id: "services",
 	...howWeHelp,
 };
 
 export const homeMoreThanAnAgency = {
-	id: "more-than-an-agency",
+	id: "what-we-can-do",
 	title: moreThanAnAgency.title,
 	lead: moreThanAnAgency.lead,
 	body: moreThanAnAgency.body,
-	image: phoneBoxRain,
+	image: jaBrooks,
 	imageAlt: moreThanAnAgency.image.alt,
 	imagePosition: moreThanAnAgency.image.position,
 };
@@ -107,3 +105,33 @@ export const homeMoreThanAnAgency = {
 export const homeCtaSection = {
 	...homeCta,
 };
+
+export const homeRecentWork = [
+	{
+		id: "client-ja-brooks",
+		title: "JA Brooks",
+		href: "/work#client-ja-brooks",
+		image: jaBrooks,
+		imageAlt: "MetaPixels client website mockup JA Brooks",
+		summary:
+			"Rebranding and a new website, hosted and maintained, to take JA Brooks into its next phase of growth in a competitive industry.",
+	},
+	{
+		id: "client-home-statements",
+		title: "Home Statements",
+		href: "/work#client-home-statements",
+		image: homeStatements,
+		imageAlt: "MetaPixels client website mockup Home Statements",
+		summary:
+			"Branding, search engine marketing and website services to design, launch and grow the exciting Home Statements company.",
+	},
+	{
+		id: "client-cyberone",
+		title: "CyberOne",
+		href: "/work#client-cyberone",
+		image: cyberone,
+		imageAlt: "MetaPixels client website mockup CyberOne",
+		summary:
+			"Rebranding overhaul, website and social advertising for this cyber security company, changing its former identity to CyberOne.",
+	},
+];

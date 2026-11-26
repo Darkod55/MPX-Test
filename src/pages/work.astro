@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import CaseStudy from "../components/sections/work/CaseStudy.astro";
+import showcase from "../assets/mpx/metapixels-webpages-showcase.png";
+import { caseStudies } from "../data/work";
+
+const workMeta = {
+	title: "Our Work - Branding, Web Design, SEO and More - MetaPixels",
+	description:
+		"Take a look at our work and you'll see why we're a great choice for everything from branding and web design, to web development, SEO and digital marketing.",
+};
+---
+
+<BaseLayout
+	title={workMeta.title}
+	description={workMeta.description}
+	canonicalPath="/work"
+	ogImage="/metapixels-social-card.jpg"
+	lcpImage={showcase}
+>
+	<Hero
+		variant="page"
+		background="primary"
+		label="Work"
+		title="How we work with our clients."
+		highlight="clients."
+		subtitle="Learn more about how our work has helped our clients, whatever the sector."
+		image={showcase}
+		imageAlt="A showcase of MetaPixels client web pages"
+		divider
+		dividerTo="white"
+	/>
+	{caseStudies.map((study) => <CaseStudy study={study} />)}
+	<CtaSection
+		id="work-with-us"
+		title="We're here, ready to help you grow your business."
+		paragraphs={[
+			"Whether it's assistance with your website, brand, socials, or better understanding your data, we're confident there'll be ways we can improve your business.",
+		]}
+		cta={{ label: "Contact us", href: "/contact" }}
+	/>
+</BaseLayout>

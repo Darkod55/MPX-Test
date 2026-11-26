@@ -2,14 +2,72 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/Hero.astro";
 import ContactSection from "../components/sections/contact/ContactSection.astro";
-import { contactHero, contactMeta } from "../content/contact";
+import { contactHero, contactMeta, contactReasons } from "../content/contact";
 ---
 
 <BaseLayout
 	title={contactMeta.title}
 	description={contactMeta.description}
+	canonicalPath="/contact"
 	lcpImage={contactHero.image}
 >
 	<Hero {...contactHero} />
+	<section class="contact-reasons">
+		<div class="container contact-reasons__inner">
+			<h2>Why would you get in touch with us?</h2>
+			<p>
+				With our expertise in web development, design, branding and marketing, there are many reasons to work with us.
+			</p>
+			<ol>
+				{contactReasons.map((reason) => <li>{reason}</li>)}
+			</ol>
+			<h3>FAQs</h3>
+			<h4>What exactly does MetaPixels do?</h4>
+			<p>
+				MetaPixels is a full-service digital agency. We provide branding and rebranding, design and web design, web development, WordPress and plugin development, hosting and site management, API integration, search engine optimisation, content marketing, digital auditing, paid search and social ads, and social media management.
+			</p>
+			<h4>Does MetaPixels work with any business?</h4>
+			<p>
+				Yes, we work with any business that is serious about investing in their company and understands that they have to invest in the digital presence to get the right returns from it.
+			</p>
+			<h4>Are there businesses MetaPixels doesn't work with?</h4>
+			<p>
+				Yes. We are not a charity. It is not viable for us to work with companies that expect our time and expertise without having the marketing budget to support it.
+			</p>
+			<h4>Can MetaPixels work in other languages and timezones?</h4>
+			<p>
+				Yes. We can work in any timezones, but there are some challenges, such as limited contact and small windows where the working days overlap.
+			</p>
+		</div>
+	</section>
 	<ContactSection />
 </BaseLayout>
+
+<style>
+	.contact-reasons {
+		padding-block: clamp(3rem, 6vw, 5rem);
+		background: var(--color-white);
+		color: var(--color-text);
+	}
+
+	.contact-reasons__inner {
+		display: grid;
+		gap: 1rem;
+		max-width: 760px;
+	}
+
+	.contact-reasons h2,
+	.contact-reasons h3,
+	.contact-reasons h4 {
+		text-transform: none;
+	}
+
+	.contact-reasons ol {
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+
+	.contact-reasons li + li {
+		margin-top: 0.4rem;
+	}
+</style>

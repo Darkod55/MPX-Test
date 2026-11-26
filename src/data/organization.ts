@@ -1,29 +1,28 @@
 /**
  * Canonical org identity for JSON-LD / NAP consistency.
- * Keep in sync with contact panel + footer socials.
+ * Visible contact page details win where they disagree with JSON-LD.
+ * See the pull request for the email, phone, and address conflict.
  */
 export const organization = {
-	name: "The Square Peg Agency",
-	legalName: "THE SQUARE PEG AGENCY LIMITED",
-	/** Companies House registration number */
-	companyNumber: "17035981",
-	email: "hello@thesquarepeg.agency",
+	name: "MetaPixels",
+	legalName: "MetaPixels Ltd",
+	/** Not published on the extracted pages. */
+	companyNumber: "",
+	email: "info@metapixels.co.uk",
+	phone: "+44 333 360 8302",
+	phoneHref: "tel:+443333608302",
 	address: {
-		streetAddress: "71-75 Shelton Street",
-		addressLocality: "London",
-		addressRegion: "England",
-		postalCode: "WC2H 9JQ",
+		addressLocality: "Maidstone",
+		addressRegion: "Kent",
 		addressCountry: "GB",
 	},
 	/**
-	 * Official profiles + registry — used as Organization.sameAs.
-	 * Prefer the public LinkedIn slug when it resolves; numeric URL is the site link.
+	 * Official profiles from the live Organization schema.
 	 */
 	sameAs: [
-		"https://www.linkedin.com/company/the-square-peg-agency",
-		"https://www.linkedin.com/company/94275355/",
-		"https://www.facebook.com/thesquarepegagency",
-		"https://www.instagram.com/thesquarepegagency/",
-		"https://find-and-update.company-information.service.gov.uk/company/17035981",
+		"https://www.facebook.com/MetaPixelsLtd",
+		"https://twitter.com/MetaPixelsMPX",
+		"https://www.linkedin.com/company/metapixelsmpx",
+		"https://www.instagram.com/metapixelsmpx/",
 	],
 } as const;
