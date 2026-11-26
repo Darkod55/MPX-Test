@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ site, url, request }) => {
 
 > We build brands, marketing campaigns and search-optimised websites that help grow your business.
 
-MetaPixels is a UK digital agency for branding, web design, web development, SEO, social and content marketing. Offices in Maidstone, Kent and Skopje.
+MetaPixels is a UK digital agency for branding, web design, web development, SEO, social and content marketing. Based at the Innovation Centre, Gidds Pond Way, Maidstone ME14 5FY.
 
 ## Key pages
 

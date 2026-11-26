@@ -41,7 +41,7 @@ export type WebPageType =
 const BRAND = organization.name;
 
 /** Default Open Graph / Twitter share image. */
-export const DEFAULT_OG_IMAGE = "/metapixels-social-card.jpg";
+export const DEFAULT_OG_IMAGE = "/metapixels-social-card.png";
 export const DEFAULT_OG_IMAGE_ALT =
 	"MetaPixels brand logo with a background displaying mockups of websites.";
 export const DEFAULT_OG_IMAGE_WIDTH = 2400;
@@ -158,7 +158,7 @@ export function organizationJsonLd(origin: string) {
 	const shareImage = absoluteUrl(DEFAULT_OG_IMAGE, origin);
 
 	return {
-		"@type": ["Organization", "ProfessionalService"],
+		"@type": ["Organization", "LocalBusiness", "ProfessionalService"],
 		"@id": orgId,
 		name: organization.name,
 		legalName: organization.legalName,
@@ -181,6 +181,8 @@ export function organizationJsonLd(origin: string) {
 		telephone: organization.phone,
 		description:
 			"We build brands, marketing campaigns and search-optimised websites that help grow your business.",
+		currenciesAccepted: "GBP",
+		paymentAccepted: "Invoice",
 		areaServed: {
 			"@type": "Country",
 			name: "United Kingdom",

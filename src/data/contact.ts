@@ -17,13 +17,12 @@ export const contactPanel = {
 		},
 		{
 			icon: "location" as const,
-			label: "UK Offices",
-			value: ["Maidstone, Kent", "UK"],
-		},
-		{
-			icon: "location" as const,
-			label: "European Offices",
-			value: ["Skopje", "NMK"],
+			label: "UK Office",
+			value: [
+				"Innovation Centre, Gidds Pond Way",
+				"Maidstone ME14 5FY",
+				"United Kingdom",
+			],
 		},
 	],
 };

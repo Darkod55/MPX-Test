@@ -19,7 +19,7 @@ export const homeMeta = {
 	description:
 		"We build brands, marketing campaigns and search-optimised websites that help grow your business. Get your free website performance audit.",
 	canonicalPath: "/",
-	ogImage: "/metapixels-social-card.jpg",
+	ogImage: "/metapixels-social-card.png",
 	ogImageAlt:
 		"MetaPixels brand logo with a background displaying mockups of websites.",
 };
